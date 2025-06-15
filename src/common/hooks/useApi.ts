@@ -7,7 +7,7 @@ import {
   IHeaderPropsAPI,
   ILoadApiProps,
   IRequestProp,
-} from "../interfaces/useApi.interface";
+} from "../interfaces/useApi";
 
 export const useApi = () => {
   const [loadingApi, setLoading] = useState<string[]>([]);

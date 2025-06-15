@@ -5,11 +5,13 @@
       "name": "pragma",
       "dependencies": {
         "@react-native-async-storage/async-storage": "^2.2.0",
+        "@react-native-vector-icons/ionicons": "^12.0.0",
         "@react-native-vector-icons/lucide": "^12.0.0",
         "@react-native/new-app-screen": "0.80.0",
         "@react-navigation/elements": "^2.4.4",
         "@react-navigation/native": "^7.1.11",
         "@react-navigation/native-stack": "^7.3.16",
+        "@tanstack/react-query": "^5.80.7",
         "axios": "^1.10.0",
         "react": "19.1.0",
         "react-native": "0.80.0",
@@ -375,6 +377,8 @@
 
     "@react-native-vector-icons/common": ["@react-native-vector-icons/common@12.0.0", "", { "dependencies": { "@react-native-community/cli-tools": "^17.0.0", "picocolors": "^1.1.1", "plist": "^3.1.0" }, "peerDependencies": { "@react-native-vector-icons/get-image": "^12.0.0", "react": "*", "react-native": "*" }, "optionalPeers": ["@react-native-vector-icons/get-image"], "bin": { "rnvi-update-plist": "lib/commonjs/scripts/updatePlist.js" } }, "sha512-hGeWU+DVa1vi49WhjDI+YvGn/vnpLSKJEPoAJagOZae4ewJKSfjoaANcHpxVmDVm/fpA10+a0e3rU7gbzS9lZA=="],
 
+    "@react-native-vector-icons/ionicons": ["@react-native-vector-icons/ionicons@12.0.0", "", { "dependencies": { "@react-native-vector-icons/common": "^12.0.0" }, "peerDependencies": { "react": "*", "react-native": "*" } }, "sha512-V5cbt9ayVZF4qXt1cuGutSPAKXzECt0k5P112POGckubJIYdgM+HlvgxaQnmg/bb0cCVH6d38zPe8tWqsAiyfQ=="],
+
     "@react-native-vector-icons/lucide": ["@react-native-vector-icons/lucide@12.0.0", "", { "dependencies": { "@react-native-vector-icons/common": "^12.0.0" }, "peerDependencies": { "react": "*", "react-native": "*" } }, "sha512-FURd3ybVi4g7HYP2oICx8/jOHngbyRQs4FcHdcHkhP1ASnBsccOoZdQAL3VCcRuMUL9bIu87meUSBX8t9VQiCA=="],
 
     "@react-native/assets-registry": ["@react-native/assets-registry@0.80.0", "", {}, "sha512-MlScsKAz99zoYghe5Rf5mUqsqz2rMB02640NxtPtBMSHNdGxxRlWu/pp1bFexDa1DYJwyIjnLgt3Z/Y90ikHfw=="],
@@ -432,6 +436,10 @@
     "@sinonjs/commons": ["@sinonjs/commons@3.0.1", "", { "dependencies": { "type-detect": "4.0.8" } }, "sha512-K3mCHKQ9sVh8o1C9cxkwxaOmXoAMlDxC1mYyHrjqOWEcBjYr76t96zL2zlj5dUGZ3HSw240X1qgH3Mjf1yJWpQ=="],
 
     "@sinonjs/fake-timers": ["@sinonjs/fake-timers@10.3.0", "", { "dependencies": { "@sinonjs/commons": "^3.0.0" } }, "sha512-V4BG07kuYSUkTCSBHG8G8TNhM+F19jXFWnQtzj+we8DrkpSBCee9Z3Ms8yiGer/dlmhe35/Xdgyo3/0rQKg7YA=="],
+
+    "@tanstack/query-core": ["@tanstack/query-core@5.80.7", "", {}, "sha512-s09l5zeUKC8q7DCCCIkVSns8zZrK4ZDT6ryEjxNBFi68G4z2EBobBS7rdOY3r6W1WbUDpc1fe5oY+YO/+2UVUg=="],
+
+    "@tanstack/react-query": ["@tanstack/react-query@5.80.7", "", { "dependencies": { "@tanstack/query-core": "5.80.7" }, "peerDependencies": { "react": "^18 || ^19" } }, "sha512-u2F0VK6+anItoEvB3+rfvTO9GEh2vb00Je05OwlUe/A0lkJBgW1HckiY3f9YZa+jx6IOe4dHPh10dyp9aY3iRQ=="],
 
     "@types/babel__core": ["@types/babel__core@7.20.5", "", { "dependencies": { "@babel/parser": "^7.20.7", "@babel/types": "^7.20.7", "@types/babel__generator": "*", "@types/babel__template": "*", "@types/babel__traverse": "*" } }, "sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA=="],
 

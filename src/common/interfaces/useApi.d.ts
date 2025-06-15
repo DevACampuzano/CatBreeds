@@ -1,17 +1,17 @@
 import { AxiosRequestConfig, Method } from "axios";
 
-export type IHeaderPropsAPI = {
+type IHeaderPropsAPI = {
   "access-token": string | undefined;
   "Content-Type": string | undefined;
   "Accept-Language": string | undefined;
 };
 
-export interface IRequestProp extends AxiosRequestConfig {
+interface IRequestProp extends AxiosRequestConfig {
   headers: IHeaderPropsAPI;
   method: Method;
 }
 
-export interface ILoadApiProps {
+interface ILoadApiProps {
   endpoint: string;
   token?: boolean;
   type: Method;
@@ -20,7 +20,7 @@ export interface ILoadApiProps {
   abortController?: AbortController;
 }
 
-export interface IErrors {
+interface IErrors {
   type: string;
   value: string;
   msg: string;

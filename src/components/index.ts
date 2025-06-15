@@ -1,1 +1,4 @@
-export * from './Text/index';
+export * from "./CatCard";
+export * from "./Stars";
+export * from "./InputSearch";
+export * from "./NotResultsFound";
