@@ -3,6 +3,7 @@ import { StyleSheet } from "react-native";
 const gobalTheme = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#f8f9fa",
   },
   primary: {
     color: "#5e3b89",

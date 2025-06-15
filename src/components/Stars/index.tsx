@@ -1,6 +1,6 @@
 import Icons from "@react-native-vector-icons/ionicons";
 
-export const Stars = (rating: number) =>
+export const Stars = ({ rating }: { rating: number }) =>
   Array.from({ length: 5 }, (_, index) => (
     <Icons
       key={index}

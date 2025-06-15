@@ -19,7 +19,7 @@ export default () => {
       return allPages.length;
     },
     initialPageParam: 0,
-    staleTime: 1000 * 60 * 1,
+    staleTime: 1000 * 60 * 5,
   });
 
   useEffect(() => {
@@ -33,7 +33,7 @@ export default () => {
     queryKey: ["breeds-list", debouncedQuery],
     queryFn: () => BreedsActions.getSearchBreeds(debouncedQuery.trim()),
     enabled: !!debouncedQuery,
-    staleTime: 1000 * 60 * 1,
+    staleTime: 1000 * 60 * 5,
   });
 
   return {

@@ -17,6 +17,7 @@ import { CatCard, InputSearch, NotResultsFound } from "../../components";
 import { AppNavigationProp } from "../../routes";
 import SkeletonLoader from "../../components/CatCard/Loading";
 import { useBreeds } from "../../common/hooks";
+import logo_catbreeeds from "../../common/assets/logo_catbreeeds_1.png";
 
 export const Home = () => {
   const navigation = useNavigation<AppNavigationProp>();
@@ -36,14 +37,14 @@ export const Home = () => {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <KeyboardAvoidingView
-        style={[gobalTheme.container, { backgroundColor: "#f8f9fa" }]}
+        style={[gobalTheme.container, styles.paper]}
         behavior={Platform.OS === "ios" ? "padding" : undefined}
       >
         <View style={gobalTheme.container}>
           <View style={[gobalTheme.header, { paddingTop: insets.top }]}>
             <View style={styles.logoContainer}>
               <Image
-                source={require("../../common/assets/logo_catbreeeds_1.png")}
+                source={logo_catbreeeds}
                 style={styles.logo}
                 resizeMode="contain"
               />
@@ -60,13 +61,8 @@ export const Home = () => {
             <FlatList
               data={listPages?.flatMap((page) => page.data) ?? []}
               keyboardShouldPersistTaps="handled"
-              renderItem={({ item }) => (
-                <CatCard
-                  item={item}
-                  onPress={(uri) =>
-                    navigation.navigate("Details", { id: item.id, uri })
-                  }
-                />
+              renderItem={({ item, index }) => (
+                <CatCard item={item} navigation={navigation} index={index} />
               )}
               keyExtractor={(item) => item.id}
               contentContainerStyle={styles.listContainer}
@@ -96,13 +92,8 @@ export const Home = () => {
                   ? listFiltered
                   : listFiltered?.data ?? []
               }
-              renderItem={({ item }) => (
-                <CatCard
-                  item={item}
-                  onPress={(uri) =>
-                    navigation.navigate("Details", { id: item.id, uri })
-                  }
-                />
+              renderItem={({ item, index }) => (
+                <CatCard item={item} navigation={navigation} index={index} />
               )}
               keyExtractor={(item) => item.id}
               contentContainerStyle={styles.listContainer}
@@ -122,6 +113,9 @@ export const Home = () => {
 };
 
 const styles = StyleSheet.create({
+  paper: {
+    backgroundColor: "#f8f9fa",
+  },
   listContainer: {
     paddingHorizontal: 20,
     paddingBottom: 20,

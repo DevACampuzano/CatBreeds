@@ -1,3 +1,8 @@
+interface Weight {
+  imperial: string;
+  metric: string;
+}
+
 interface CatBreed {
   id: string;
   name: string;
@@ -7,10 +12,7 @@ interface CatBreed {
   description: string;
   temperament: string;
   life_span: string;
-  weight: {
-    imperial: string;
-    metric: string;
-  };
+  weight: Weight;
   adaptability: number;
   affection_level: number;
   child_friendly: number;
@@ -23,4 +25,12 @@ interface CatBreed {
   stranger_friendly: number;
   vocalisation: number;
   hypoallergenic: number;
+}
+
+interface CatBreedImage {
+  id: string;
+  url: string;
+  breeds: CatBreed[];
+  width: number;
+  height: number;
 }

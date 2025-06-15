@@ -2,11 +2,11 @@ import { NavigationContainer } from "@react-navigation/native";
 import { AppRouter } from "./routes";
 import { TansStackProvider } from "./common/store/TansStack";
 
-const AppState = ()=>(
+const AppState = () => (
   <TansStackProvider>
     <AppRouter />
   </TansStackProvider>
-)
+);
 
 const App = () => {
   return (

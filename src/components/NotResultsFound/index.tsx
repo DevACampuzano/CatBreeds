@@ -1,13 +1,10 @@
 import { Image, StyleSheet, Text, View } from "react-native";
 import gobalTheme from "../../styles/theme";
+import logo_catbreeeds from "../../common/assets/logo_catbreeeds.png";
 
 export const NotResultsFound = () => (
   <View style={styles.container}>
-    <Image
-      source={require("../../common/assets/logo_catbreeeds_1.png")}
-      style={styles.logo}
-      resizeMode="contain"
-    />
+    <Image source={logo_catbreeeds} style={styles.logo} resizeMode="contain" />
     <Text style={styles.text}>No results found</Text>
   </View>
 );

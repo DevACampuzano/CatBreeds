@@ -1,62 +1,79 @@
-import { Image, Text, TouchableOpacity, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 import Icons from "@react-native-vector-icons/ionicons";
 import styles from "./styles";
 import gobalTheme from "../../styles/theme";
 import { Stars } from "../Stars";
-import { theCatApi } from "../../common/api";
-import { useEffect, useState } from "react";
+import logo_catbreeeds from "../../common/assets/logo_catbreeeds.png";
+import Animated, { FadeInDown } from "react-native-reanimated";
+import { useQuery } from "@tanstack/react-query";
+import { BreedsActions } from "../../service";
+import { AppNavigationProp } from "../../routes";
 
 export const CatCard = ({
   item,
-  onPress,
+  navigation,
+  index,
 }: {
+  index: number;
   item: {
+    id: string;
     reference_image_id: string;
     name: string;
     origin: string;
     intelligence: number;
   };
-  onPress: (uri: string) => void;
+  navigation: AppNavigationProp;
 }) => {
-  const [image, setImage] = useState<string>("");
-  useEffect(() => {
-    const getImage = async () => {
-      const img = await theCatApi
-        .get(`/images/${item.reference_image_id}`)
-        .then((res) => {
-          return res.data.url;
-        });
-      setImage(img);
-    };
-    getImage();
-  }, [item.reference_image_id]);
-  return (
-    <TouchableOpacity style={styles.card} onPress={() => onPress(image)}>
-      {!image ? (
-        <Image
-          source={require("../../common/assets/logo_catbreeeds.png")}
-          style={styles.catImage}
-        />
-      ) : (
-        <Image source={{ uri: image }} style={styles.catImage} />
-      )}
+  const { data: image, isLoading } = useQuery({
+    queryKey: ["breeds-image", item.reference_image_id],
+    queryFn: () => BreedsActions.getImageById(item.reference_image_id),
+    enabled: !!item.reference_image_id,
+    staleTime: 1000 * 60 * 60,
+  });
 
-      <View style={styles.cardContent}>
-        <Text style={styles.catName}>{item.name}</Text>
-        <View style={styles.infoRow}>
-          <Icons
-            name="location-outline"
-            size={16}
-            color={gobalTheme.secondaryText.color}
-          />
-          <Text style={styles.origin}>{item.origin}</Text>
+  return (
+    <Animated.View entering={FadeInDown.delay(300 * index)}>
+      <TouchableOpacity
+        style={styles.card}
+        onPress={() => {
+          console.log(item.reference_image_id);
+          navigation.navigate("Details", {
+            id: item.id,
+            uri: image?.url ?? "",
+            reference_image_id: item.reference_image_id,
+          });
+        }}
+        activeOpacity={0.8}
+      >
+        <Animated.Image
+          source={{ uri: image?.url }}
+          style={styles.catImage}
+          sharedTransitionTag={item.reference_image_id}
+          defaultSource={logo_catbreeeds}
+        />
+        <View style={styles.cardContent}>
+          <Text style={styles.catName}>{item.name}</Text>
+          <View style={styles.infoRow}>
+            <Icons
+              name="location-outline"
+              size={16}
+              color={gobalTheme.secondaryText.color}
+            />
+            <Text style={styles.origin}>{item.origin}</Text>
+          </View>
+          <View style={styles.intelligenceRow}>
+            <Text style={styles.intelligenceLabel}>Inteligencia:</Text>
+            <View style={styles.starsContainer}>
+              <Stars rating={item.intelligence} />
+            </View>
+          </View>
         </View>
-        <View style={styles.intelligenceRow}>
-          <Text style={styles.intelligenceLabel}>Inteligencia:</Text>
-          <View style={styles.starsContainer}>{Stars(item.intelligence)}</View>
-        </View>
-      </View>
-      <Icons name="chevron-forward" size={24} color={gobalTheme.accent.color} />
-    </TouchableOpacity>
+        <Icons
+          name="chevron-forward"
+          size={24}
+          color={gobalTheme.accent.color}
+        />
+      </TouchableOpacity>
+    </Animated.View>
   );
 };

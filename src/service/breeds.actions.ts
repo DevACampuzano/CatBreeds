@@ -18,11 +18,19 @@ export const getBreeds = async (limit: number = 10, page: number = 0) => {
 
 export const getBreedById = async (id: string) => {
   if (!id) throw new Error("ID cannot be empty");
-  return await theCatApi.get<CatBreed>(`/breeds/${id}`);
+  const response = await theCatApi.get<CatBreed>(`/breeds/${id}`);
+  return response.data;
+};
+
+export const getImageById = async (id: string) => {
+  if (!id) throw new Error("Image ID cannot be empty");
+  const response = await theCatApi.get<CatBreedImage>(`/images/${id}`);
+  return response.data;
 };
 
 export default {
   getSearchBreeds,
   getBreeds,
   getBreedById,
+  getImageById,
 };
