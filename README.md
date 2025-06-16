@@ -113,70 +113,85 @@ Aplicación móvil desarrollada con React Native para explorar razas de gatos, v
 
 ### 1. Obtención de rezas con scroll infinito
 
-    ```ts
-        // src/common/hooks/useBreeds.ts
-        const {
-            data: { pages: listPages },
-            fetchNextPage,
-            hasNextPage,
-            isFetchingNextPage,
-            isLoading: isLoadingBreeds,
-        } = useInfiniteQuery({
-                queryKey: ["breeds-list"],
-                queryFn: ({ pageParam = 0, signal }) =>
-                BreedsActions.getBreeds(6, pageParam, signal),
-                getNextPageParam: (_, allPages) => allPages.length,
-                initialPageParam: 0,
-                staleTime: 1000 * 60 * 60,
-            });
-    ```
+```ts
+// src/common/hooks/useBreeds.ts
+const {
+  data: { pages: listPages },
+  fetchNextPage,
+  hasNextPage,
+  isFetchingNextPage,
+  isLoading: isLoadingBreeds,
+} = useInfiniteQuery({
+  queryKey: ["breeds-list"],
+  queryFn: ({ pageParam = 0, signal }) =>
+    BreedsActions.getBreeds(6, pageParam, signal),
+  getNextPageParam: (_, allPages) => allPages.length,
+  initialPageParam: 0,
+  staleTime: 1000 * 60 * 60,
+});
+```
 
 ### 2. Búsqueda con debounce
 
-    ```ts
-        // src/common/hooks/useBreeds.ts
-        const {
-            data: listFiltered = [],
-            isLoading: isLoadingFiltered,
-            refetch,
-        } = useQuery({
-            queryKey: ["breeds-list", searchQuery],
-            queryFn: ({ signal }) =>  BreedsActions.getSearchBreeds(searchQuery.trim(), signal),
-            enabled: !!searchQuery,
-            staleTime: 1000 * 60 * 60,
-        });
+```ts
+// src/common/hooks/useBreeds.ts
+const {
+  data: listFiltered = [],
+  isLoading: isLoadingFiltered,
+  refetch,
+} = useQuery({
+  queryKey: ["breeds-list", searchQuery],
+  queryFn: ({ signal }) =>
+    BreedsActions.getSearchBreeds(searchQuery.trim(), signal),
+  enabled: !!searchQuery,
+  staleTime: 1000 * 60 * 60,
+});
 
-        const debouncedRefetch = useDebounce(refetch, 500);
+const debouncedRefetch = useDebounce(refetch, 500);
 
-        const handleChangeSearchText = useCallback(
-            (search: string) => {
-            setSearchQuery(search);
-            debouncedRefetch();
-            },
-            [debouncedRefetch]
-        );
-    ```
+const handleChangeSearchText = useCallback(
+  (search: string) => {
+    setSearchQuery(search);
+    debouncedRefetch();
+  },
+  [debouncedRefetch]
+);
+```
 
 ### 3. Animaciones de compontes
 
-    * Componente CatCard
+- Componente CatCard
 
-        ```tsx
-            // src/components/CatCard/index.tsx
-            <Animated.View
-                entering={index < 6 ? FadeInDown.delay(200 * index) :   undefined}
-            >
-        ```
+  ```js
+  // src/components/CatCard/index.tsx
+  ```
 
-    * Componente Section
+  ```html
+  <Animated.View
+    entering="{index"
+    <
+    6
+    ?
+    FadeInDown.delay(200
+    *
+    index)
+    :
+    undefined}
+  ></Animated.View>
+  ```
 
-    ```tsx
-        // src/components/Section/index.tsx
-        <Animated.View
-            style={styles.section}
-            entering={FadeInDown.delay(300 * index)}
-        >
-    ```
+- Componente Section
+  ```js
+  // src/components/Section/index.tsx
+  ```
+  ```html
+  <Animated.View
+    style="{styles.section}"
+    entering="{FadeInDown.delay(300"
+    *
+    index)}
+  ></Animated.View>
+  ```
 
 ## 🎨 Componentes de UI
 
