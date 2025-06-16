@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
   catName: {
     fontFamily: "Roboto-Bold",
     fontSize: 18,
+    height: 18,
     fontWeight: "bold",
     color: "#5e3b89",
     marginBottom: 5,

@@ -2,7 +2,6 @@
 import {
   View,
   Image,
-  StyleSheet,
   ActivityIndicator,
   FlatList,
   KeyboardAvoidingView,
@@ -14,11 +13,12 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 //local imports
+import styles from "./styles";
 import gobalTheme from "../../styles/theme";
-import { CatCard, InputSearch, ErrorMessage } from "../../components";
+import { useBreeds } from "../../common/hooks";
 import { AppNavigationProp } from "../../routes";
 import SkeletonLoader from "../../components/CatCard/Loading";
-import { useBreeds } from "../../common/hooks";
+import { CatCard, InputSearch, ErrorMessage } from "../../components";
 import logo_catbreeeds from "../../common/assets/img/logo_catbreeeds_1.png";
 
 export const Home = () => {
@@ -128,19 +128,3 @@ export const Home = () => {
     </TouchableWithoutFeedback>
   );
 };
-
-const styles = StyleSheet.create({
-  listContainer: {
-    paddingHorizontal: 20,
-    paddingVertical: 10,
-  },
-  logoContainer: {
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  logo: {
-    width: 120,
-    height: 80,
-    tintColor: "white",
-  },
-});

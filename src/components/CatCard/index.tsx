@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import { Text, TouchableOpacity, View } from "react-native";
 import Icons from "@react-native-vector-icons/ionicons";
 import styles from "./styles";
@@ -26,25 +27,25 @@ export const CatCard = ({ item, navigation, index }: CatCardProps) => {
     enabled: !!item.reference_image_id,
     staleTime: 1000 * 60 * 60,
   });
-  const scale = useSharedValue(1);
+  const scale = useSharedValue(false);
 
   const longPressGesture = Gesture.LongPress()
     .onStart(() => {
-      scale.value = withTiming(1.7, { duration: 200 });
+      scale.value = true;
     })
     .onFinalize(() => {
-      scale.value = withTiming(1, { duration: 200 });
+      scale.value = false;
     });
 
   const animatedStyle = useAnimatedStyle(() => ({
-    transform: [{ scale: scale.value }],
-    zIndex: 10,
+    transform: [
+      { scale: withTiming(scale.value ? 1.7 : 1, { duration: 200 }) },
+    ],
   }));
 
   return (
     <Animated.View
       entering={index < 6 ? FadeInDown.delay(200 * index) : undefined}
-      style={{ zIndex: 1 }}
     >
       <TouchableOpacity
         style={styles.card}
@@ -57,7 +58,7 @@ export const CatCard = ({ item, navigation, index }: CatCardProps) => {
         }}
         activeOpacity={0.8}
       >
-        <GestureHandlerRootView style={{}}>
+        <GestureHandlerRootView style={{ zIndex: 100 }}>
           <GestureDetector gesture={longPressGesture}>
             <Animated.Image
               source={isLoading ? logo_catbreeeds : { uri: image?.url }}
