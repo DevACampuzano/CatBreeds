@@ -21,7 +21,7 @@ import { AppNavigationProp, AppStackParamList } from "../../routes";
 import { useQuery } from "@tanstack/react-query";
 import { BreedsActions } from "../../service";
 import { useNavigation } from "@react-navigation/native";
-import placeholderUrl from "../../common/assets/logo_catbreeeds.png";
+import placeholderUrl from "../../common/assets/img/logo_catbreeeds.png";
 
 type Props = NativeStackScreenProps<AppStackParamList, "Details">;
 
@@ -224,6 +224,7 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     fontSize: 20,
+    fontFamily: "Roboto-Bold",
     fontWeight: "bold",
     color: "white",
     flex: 1,
@@ -248,15 +249,18 @@ const styles = StyleSheet.create({
     fontSize: 28,
     fontWeight: "bold",
     color: "#5e3b89",
+    fontFamily: "Roboto-Bold",
     marginBottom: 10,
   },
   origin: {
     fontSize: 18,
     color: "#6c757d",
+    fontFamily: "Roboto",
     marginLeft: 8,
   },
   description: {
     fontSize: 16,
+    fontFamily: "Roboto",
     color: "#333",
     lineHeight: 24,
   },
@@ -274,6 +278,7 @@ const styles = StyleSheet.create({
   temperamentText: {
     color: "white",
     fontSize: 14,
+    fontFamily: "Roboto",
     fontWeight: "500",
   },
   infoItem: {
@@ -285,16 +290,12 @@ const styles = StyleSheet.create({
   infoLabel: {
     fontSize: 16,
     color: "#6c757d",
+    fontFamily: "Roboto",
   },
   infoValue: {
     fontSize: 16,
+    fontFamily: "Roboto",
     fontWeight: "600",
     color: "#333",
-  },
-  errorText: {
-    fontSize: 18,
-    color: "#6c757d",
-    textAlign: "center",
-    marginTop: 50,
   },
 });

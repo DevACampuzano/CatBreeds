@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
   },
   characteristicLabel: {
+    fontFamily: "Roboto",
     fontSize: 16,
     color: "#6c757d",
     flex: 1,

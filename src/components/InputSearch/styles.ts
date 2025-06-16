@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
     flex: 1,
     marginLeft: 10,
     fontSize: 16,
+    fontFamily: "Roboto",
     color: "#333",
   },
 });

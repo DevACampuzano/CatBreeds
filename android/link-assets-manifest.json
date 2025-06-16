@@ -1,0 +1,25 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/common/assets/fonts/Roboto-Bold.ttf",
+      "sha1": "508c35dee818addce6cc6d1fb6e42f039da5a7cf"
+    },
+    {
+      "path": "src/common/assets/fonts/Roboto.ttf",
+      "sha1": "3bff51436aa7eb995d84cfc592cc63e1316bb400"
+    },
+    {
+      "path": "src/common/assets/img/image.d.ts",
+      "sha1": "8e6b7927b162ce20e1db3040fe52d1283ebb5af5"
+    },
+    {
+      "path": "src/common/assets/img/logo_catbreeeds.png",
+      "sha1": "db20a395e41a0e0eb3eee3da0fb7fb5233466ffc"
+    },
+    {
+      "path": "src/common/assets/img/logo_catbreeeds_1.png",
+      "sha1": "11425a1978b290411d3dc6decadee62a712b55aa"
+    }
+  ]
+}

@@ -19,7 +19,7 @@ import { CatCard, InputSearch, NotResultsFound } from "../../components";
 import { AppNavigationProp } from "../../routes";
 import SkeletonLoader from "../../components/CatCard/Loading";
 import { useBreeds } from "../../common/hooks";
-import logo_catbreeeds from "../../common/assets/logo_catbreeeds_1.png";
+import logo_catbreeeds from "../../common/assets/img/logo_catbreeeds_1.png";
 
 export const Home = () => {
   const navigation = useNavigation<AppNavigationProp>();

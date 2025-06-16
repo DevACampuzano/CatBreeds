@@ -3,7 +3,7 @@ import Icons from "@react-native-vector-icons/ionicons";
 import styles from "./styles";
 import gobalTheme from "../../styles/theme";
 import { Stars } from "../Stars";
-import logo_catbreeeds from "../../common/assets/logo_catbreeeds.png";
+import logo_catbreeeds from "../../common/assets/img/logo_catbreeeds.png";
 import Animated, { FadeInDown } from "react-native-reanimated";
 import { useQuery } from "@tanstack/react-query";
 import { BreedsActions } from "../../service";

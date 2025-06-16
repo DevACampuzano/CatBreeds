@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
     marginLeft: 15,
   },
   catName: {
+    fontFamily: "Roboto-Bold",
     fontSize: 18,
     fontWeight: "bold",
     color: "#5e3b89",
@@ -38,6 +39,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   origin: {
+    fontFamily: "Roboto",
     fontSize: 14,
     color: "#6c757d",
     marginLeft: 5,
@@ -47,6 +49,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   intelligenceLabel: {
+    fontFamily: "Roboto",
     fontSize: 14,
     color: "#6c757d",
     marginRight: 8,

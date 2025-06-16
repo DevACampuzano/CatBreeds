@@ -1,6 +1,6 @@
 import { Image, StyleSheet, Text, View } from "react-native";
 import gobalTheme from "../../styles/theme";
-import logo_catbreeeds from "../../common/assets/logo_catbreeeds.png";
+import logo_catbreeeds from "../../common/assets/img/logo_catbreeeds.png";
 
 export const NotResultsFound = () => (
   <View style={styles.container}>
@@ -25,5 +25,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "500",
     textAlign: "center",
+    fontFamily: "Roboto",
   },
 });
