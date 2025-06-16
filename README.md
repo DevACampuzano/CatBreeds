@@ -56,7 +56,7 @@ Disfruta de una vista rápida de las principales funcionalidades: exploración d
 ## 🚀 Características
 
 - Explora un listado completo de razas de gatos
-- SBusca razas por nombre
+- Busca razas por nombre
 - Visualiza información detallada (Inteligencia, esperanza de vida, adaptabilidad, etc.)
 - Interfaz atractiva con animaciones fluidas
 - Scroll infinito para el listado de razas
@@ -83,7 +83,7 @@ Disfruta de una vista rápida de las principales funcionalidades: exploración d
    cd catbreeds
    ```
 
-2. instala las dependecias:
+2. Instala las dependecias:
 
    ```bash
    npm install
@@ -140,7 +140,7 @@ Disfruta de una vista rápida de las principales funcionalidades: exploración d
 - React Query (TanStack) - Consulta y caché de datos
 - React Native Reanimated - Animaciones
 - Axios - Preticiones HTTP
-- React Native Vector Icons (ionicons) - paquete de iconos
+- React Native Vector Icons (ionicons) - paquete de íconos
 
 ---
 
