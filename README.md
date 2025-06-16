@@ -1,97 +1,197 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# CatBreeds App 🐱
 
-# Getting Started
+<p align="center">
+    <img src="./android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" alt="App Screenshot or Logo" width="100px" />
+    <p align="center">Explora el fascinante mundo de las razas felinas</p>
+</p>
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+[![React Native](https://img.shields.io/badge/React%20Native-v0.80.0-blue.svg?logo=react)](https://reactnative.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-v5.0.4-blue.svg?logo=typescript)](https://www.typescriptlang.org/)
+[![Tanstack Query](https://img.shields.io/badge/Tanstack_Query-v5.80.7-3e9b0d.svg?logo=reactquery&logoColor=3e9b0d)](https://tanstack.com/query/latest)
+[![React Navigation](https://img.shields.io/badge/React_Navigation-v7-af92ff.svg?logo=react&logoColor=af92ff)](https://reactnavigation.org/)
+[![React Navite Reanimated](https://img.shields.io/badge/React_Navite_Reanimated-v3.18.0-001a72.svg?logo=react&logoColor=001a72)](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/getting-started/)
+[![Axios](https://img.shields.io/badge/Axios-v1.10.0-5a2ae4.svg?logo=Axios&logoColor=5a2ae4)](https://axios-http.com/es/docs/intro)
+[![Node](https://img.shields.io/badge/node-v22.15.0-fff?logo=nodedotjs)](https://bun.sh/)
+[![Bun](https://img.shields.io/badge/Bun-v1.2.12+-000?logo=bun&logoColor=fff)](https://bun.sh/)
+[![npm](https://img.shields.io/badge/npm-v11.4.2-CB3837?logo=npm&logoColor=CB3837)](https://www.npmjs.com/)
+[![Yarn](https://img.shields.io/badge/Yarn-v1.22.22-2C8EBB?logo=yarn&logoColor=2C8EBB)](https://yarnpkg.com/)
+[![React Native Vector Icons](https://img.shields.io/badge/React_Native_vector_Icons-v12.0.0-1.svg)](https://github.com/oblador/react-native-vector-icons/tree/master)
+[![TheCatAPI](https://img.shields.io/badge/API-TheCatAPI-orange.svg)](https://developers.thecatapi.com/)
+![Android](https://img.shields.io/badge/Android-3DDC84?logo=android&logoColor=white)
+![iOS](https://img.shields.io/badge/iOS-000000?logo=apple&logoColor=F0F0F0)
 
-## Step 1: Start Metro
+Aplicación móvil desarrollada con React Native para explorar razas de gatos, ver características detalladas y buscar razas específicas usando [TheCatAPI](https://developers.thecatapi.com/).
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+---
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+## 🚀 Características
 
-```sh
-# Using npm
-npm start
+- Explora un listado completo de razas de gatos
+- SBusca razas por nombre
+- Visualiza información detallada (Inteligencia, esperanza de vida, adaptabilidad, etc.)
+- Interfaz atractiva con animaciones fluidas
+- Scroll infinito para el listado de razas
+- Funcionalidad offline gracias al caché de React Query
 
-# OR using Yarn
-yarn start
+---
+
+## 📦 Instalación
+
+### Requisitos previos
+
+- Node.js (v18+)
+- npm / Yarn
+- bun (opcional)
+- React Native CLI
+- Android Studio / Xcode (para emuladores)
+
+### Setup
+
+1. Clona el repositorio:
+
+   ```bash
+   git clone https://github.com/devacampuzano/catbreeds.git
+   cd catbreeds
+   ```
+
+2. instala las dependecias:
+
+   ```bash
+   npm install
+   # o
+   yarn
+   # o
+   bun install
+   ```
+
+3. Ejecuta la app:
+
+   - android:
+
+     ```bash
+     npx react-native run-android
+     # o
+     bun android
+     ```
+
+   - iOS:
+
+     ```bash
+     npx react-native run-ios
+     # o
+     bun ios
+     ```
+
+## 📂 Estructura del proyecto
+
+```
+    catbreeds/
+    ├── src/
+    │   ├── components/       # Componentes reutilizables (Tarjetas, Búsqueda, Estrellas, etc.)
+    │   ├── screens/          # Pantallas (home, details)
+    │   ├── common/
+    │   │   ├── api/          # Configuración de API (TheCatAPI)
+    │   │   ├── hooks/        # Hooks personalizados (useBreeds, useDebounce)
+    │   │   ├── store/        # Gestión de estado
+    │   │   └── assets/       # Fuentes, imágenes
+    │   ├── routes/           # Configuración de navegación
+    │   ├── service/          # Acciones de API
+    │   └── styles/           # Temas globales
 ```
 
-## Step 2: Build and run your app
+## 🔨 Tecnologías Utilizadas
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+- React Native (v0.80)
+- TypreScript
+- React Navigation (V7)
+- React Query (TanStack) - Consulta y caché de datos
+- React Navite Reanimated - Animaciones
+- Axios - Preticiones HTTP
+- React Native Vector Icons (ionicons) - paquete de iconos
 
-### Android
+## <span style="display: inline-flex; align-items: center; gap: 8px;"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffff"><path d="M320-240 80-480l240-240 57 57-184 184 183 183-56 56Zm320 0-57-57 184-184-183-183 56-56 240 240-240 240Z"/></svg>Fragmeentos de Código</span>
 
-```sh
-# Using npm
-npm run android
+### 1. Obtención de rezas con scroll infinito
 
-# OR using Yarn
-yarn android
-```
+    ```ts
+        // src/common/hooks/useBreeds.ts
+        const {
+            data: { pages: listPages },
+            fetchNextPage,
+            hasNextPage,
+            isFetchingNextPage,
+            isLoading: isLoadingBreeds,
+        } = useInfiniteQuery({
+                queryKey: ["breeds-list"],
+                queryFn: ({ pageParam = 0, signal }) =>
+                BreedsActions.getBreeds(6, pageParam, signal),
+                getNextPageParam: (_, allPages) => allPages.length,
+                initialPageParam: 0,
+                staleTime: 1000 * 60 * 60,
+            });
+    ```
 
-### iOS
+### 2. Búsqueda con debounce
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+    ```ts
+        // src/common/hooks/useBreeds.ts
+        const {
+            data: listFiltered = [],
+            isLoading: isLoadingFiltered,
+            refetch,
+        } = useQuery({
+            queryKey: ["breeds-list", searchQuery],
+            queryFn: ({ signal }) =>  BreedsActions.getSearchBreeds(searchQuery.trim(), signal),
+            enabled: !!searchQuery,
+            staleTime: 1000 * 60 * 60,
+        });
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+        const debouncedRefetch = useDebounce(refetch, 500);
 
-```sh
-bundle install
-```
+        const handleChangeSearchText = useCallback(
+            (search: string) => {
+            setSearchQuery(search);
+            debouncedRefetch();
+            },
+            [debouncedRefetch]
+        );
+    ```
 
-Then, and every time you update your native dependencies, run:
+### 3. Animaciones de compontes
 
-```sh
-bundle exec pod install
-```
+    * Componente CatCard
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+        ```tsx
+            // src/components/CatCard/index.tsx
+            <Animated.View
+                entering={index < 6 ? FadeInDown.delay(200 * index) :   undefined}
+            >
+        ```
 
-```sh
-# Using npm
-npm run ios
+    * Componente Section
 
-# OR using Yarn
-yarn ios
-```
+    ```tsx
+        // src/components/Section/index.tsx
+        <Animated.View
+            style={styles.section}
+            entering={FadeInDown.delay(300 * index)}
+        >
+    ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+## 🎨 Componentes de UI
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+- CattCard: Tarjeta con imagen, nombre y intelgencia de la raza
+- Stars: Puntuación con estrellas interactivas
+- InputSearch: Barra de búsqueda
+- Section: Secciones plegables en pantalla de detalles
 
-## Step 3: Modify your app
+## 📡 Integración con API
 
-Now that you have successfully run the app, let's make changes!
+La app usa los endpoints de [TheCatAPI](https://developers.thecatapi.com/)
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
-
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+| Endpoint         | Método | Descripción                                   |
+| ---------------- | ------ | --------------------------------------------- |
+| `/breeds`        | GET    | Obtiene el listado por paginado de las razas  |
+| `/breeds/search` | GET    | Busca razas por nombre                        |
+| `/breeds/{id}`   | GET    | Obtiene detalles específicos de una raza      |
+| `/images/{id}`   | GET    | Obtiene imágenes de referencia para las razas |

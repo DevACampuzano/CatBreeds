@@ -15,9 +15,7 @@ export default () => {
     queryKey: ["breeds-list"],
     queryFn: ({ pageParam = 0, signal }) =>
       BreedsActions.getBreeds(6, pageParam, signal),
-    getNextPageParam: (_, allPages) => {
-      return allPages.length;
-    },
+    getNextPageParam: (_, allPages) => allPages.length,
     initialPageParam: 0,
     staleTime: 1000 * 60 * 60,
   });
