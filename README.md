@@ -102,10 +102,10 @@ Aplicación móvil desarrollada con React Native para explorar razas de gatos, v
 ## 🔨 Tecnologías Utilizadas
 
 - React Native (v0.80)
-- TypreScript
+- TypeScript
 - React Navigation (V7)
 - React Query (TanStack) - Consulta y caché de datos
-- React Navite Reanimated - Animaciones
+- React Native Reanimated - Animaciones
 - Axios - Preticiones HTTP
 - React Native Vector Icons (ionicons) - paquete de iconos
 
@@ -195,7 +195,7 @@ const handleChangeSearchText = useCallback(
 
 ## 🎨 Componentes de UI
 
-- CattCard: Tarjeta con imagen, nombre y intelgencia de la raza
+- CatCard: Tarjeta con imagen, nombre y intelgencia de la raza
 - Stars: Puntuación con estrellas interactivas
 - InputSearch: Barra de búsqueda
 - Section: Secciones plegables en pantalla de detalles

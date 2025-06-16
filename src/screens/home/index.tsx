@@ -15,7 +15,7 @@ import { useNavigation } from "@react-navigation/native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 //local imports
 import gobalTheme from "../../styles/theme";
-import { CatCard, InputSearch, NotResultsFound } from "../../components";
+import { CatCard, InputSearch, ErrorMessage } from "../../components";
 import { AppNavigationProp } from "../../routes";
 import SkeletonLoader from "../../components/CatCard/Loading";
 import { useBreeds } from "../../common/hooks";
@@ -39,7 +39,7 @@ export const Home = () => {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <KeyboardAvoidingView
-        style={[gobalTheme.container, styles.paper]}
+        style={[gobalTheme.container]}
         behavior={Platform.OS === "ios" ? "padding" : undefined}
       >
         <View style={gobalTheme.container}>
@@ -93,7 +93,11 @@ export const Home = () => {
                 ) : null
               }
               ListEmptyComponent={
-                isLoadingBreeds ? <SkeletonLoader /> : <NotResultsFound />
+                isLoadingBreeds ? (
+                  <SkeletonLoader />
+                ) : (
+                  <ErrorMessage text="No results found" />
+                )
               }
             />
           ) : (
@@ -110,7 +114,9 @@ export const Home = () => {
               contentContainerStyle={styles.listContainer}
               showsVerticalScrollIndicator={false}
               ListEmptyComponent={
-                !isLoadingFiltered ? <NotResultsFound /> : undefined
+                !isLoadingFiltered ? (
+                  <ErrorMessage text="No results found" />
+                ) : undefined
               }
               ListFooterComponent={
                 isLoadingFiltered ? <SkeletonLoader /> : undefined
@@ -124,12 +130,9 @@ export const Home = () => {
 };
 
 const styles = StyleSheet.create({
-  paper: {
-    backgroundColor: "#f8f9fa",
-  },
   listContainer: {
     paddingHorizontal: 20,
-    paddingBottom: 20,
+    paddingVertical: 10,
   },
   logoContainer: {
     alignItems: "center",

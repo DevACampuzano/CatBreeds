@@ -5,8 +5,8 @@
       "name": "pragma",
       "dependencies": {
         "@react-native-async-storage/async-storage": "^2.2.0",
+        "@react-native-community/netinfo": "^11.4.1",
         "@react-native-vector-icons/ionicons": "^12.0.0",
-        "@react-native-vector-icons/lucide": "^12.0.0",
         "@react-native/new-app-screen": "0.80.0",
         "@react-navigation/elements": "^2.4.4",
         "@react-navigation/native": "^7.1.11",
@@ -381,11 +381,11 @@
 
     "@react-native-community/cli-types": ["@react-native-community/cli-types@19.0.0", "", { "dependencies": { "joi": "^17.2.1" } }, "sha512-fpnpy6iLX9Uohh83vWRsfi3wMfFT8C8TiKrMiln2e9rnoyZwZqm3gnz8pDUnldmFkaOjKxW0FAiRXxwhJGebsw=="],
 
+    "@react-native-community/netinfo": ["@react-native-community/netinfo@11.4.1", "", { "peerDependencies": { "react-native": ">=0.59" } }, "sha512-B0BYAkghz3Q2V09BF88RA601XursIEA111tnc2JOaN7axJWmNefmfjZqw/KdSxKZp7CZUuPpjBmz/WCR9uaHYg=="],
+
     "@react-native-vector-icons/common": ["@react-native-vector-icons/common@12.0.0", "", { "dependencies": { "@react-native-community/cli-tools": "^17.0.0", "picocolors": "^1.1.1", "plist": "^3.1.0" }, "peerDependencies": { "@react-native-vector-icons/get-image": "^12.0.0", "react": "*", "react-native": "*" }, "optionalPeers": ["@react-native-vector-icons/get-image"], "bin": { "rnvi-update-plist": "lib/commonjs/scripts/updatePlist.js" } }, "sha512-hGeWU+DVa1vi49WhjDI+YvGn/vnpLSKJEPoAJagOZae4ewJKSfjoaANcHpxVmDVm/fpA10+a0e3rU7gbzS9lZA=="],
 
     "@react-native-vector-icons/ionicons": ["@react-native-vector-icons/ionicons@12.0.0", "", { "dependencies": { "@react-native-vector-icons/common": "^12.0.0" }, "peerDependencies": { "react": "*", "react-native": "*" } }, "sha512-V5cbt9ayVZF4qXt1cuGutSPAKXzECt0k5P112POGckubJIYdgM+HlvgxaQnmg/bb0cCVH6d38zPe8tWqsAiyfQ=="],
-
-    "@react-native-vector-icons/lucide": ["@react-native-vector-icons/lucide@12.0.0", "", { "dependencies": { "@react-native-vector-icons/common": "^12.0.0" }, "peerDependencies": { "react": "*", "react-native": "*" } }, "sha512-FURd3ybVi4g7HYP2oICx8/jOHngbyRQs4FcHdcHkhP1ASnBsccOoZdQAL3VCcRuMUL9bIu87meUSBX8t9VQiCA=="],
 
     "@react-native/assets-registry": ["@react-native/assets-registry@0.80.0", "", {}, "sha512-MlScsKAz99zoYghe5Rf5mUqsqz2rMB02640NxtPtBMSHNdGxxRlWu/pp1bFexDa1DYJwyIjnLgt3Z/Y90ikHfw=="],
 

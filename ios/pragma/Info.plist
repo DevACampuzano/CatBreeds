@@ -51,7 +51,6 @@
 	<false/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Lucide.ttf</string>
 		<string>Ionicons.ttf</string>
 		<string>Roboto.ttf</string>
 		<string>Roboto-Bold.ttf</string>

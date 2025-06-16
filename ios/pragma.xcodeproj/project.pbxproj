@@ -8,18 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		076B56F2EF15CADA622F0448 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
+		0C0BD50B4F804F6696A1EF1F /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 036ED417B3A64804B9C2AF4E /* Roboto-Bold.ttf */; };
 		0C80B921A6F3F58F76C31292 /* libPods-pragma.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-pragma.a */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		383ECC7DA8AE420AAFA98693 /* Roboto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9D7373AAA06F4C67B0AEFD58 /* Roboto.ttf */; };
+		38CF2A4B9BE74016AFF83E52 /* logo_catbreeeds.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A28217D4CBB4B6B9EF51D82 /* logo_catbreeeds.png */; };
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		383ECC7DA8AE420AAFA98693 /* Roboto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9D7373AAA06F4C67B0AEFD58 /* Roboto.ttf */; };
 		D6CAFB48A02B4AFBA3594280 /* image.d.ts in Resources */ = {isa = PBXBuildFile; fileRef = E9BB9E8E41AA40B5A5C46BB5 /* image.d.ts */; };
-		38CF2A4B9BE74016AFF83E52 /* logo_catbreeeds.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A28217D4CBB4B6B9EF51D82 /* logo_catbreeeds.png */; };
 		D8524C2E12154E4389C8F795 /* logo_catbreeeds_1.png in Resources */ = {isa = PBXBuildFile; fileRef = F5B66467856A4C56B8FB22C5 /* logo_catbreeeds_1.png */; };
-		0C0BD50B4F804F6696A1EF1F /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 036ED417B3A64804B9C2AF4E /* Roboto-Bold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		036ED417B3A64804B9C2AF4E /* Roboto-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Bold.ttf"; path = "../src/common/assets/fonts/Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		0A28217D4CBB4B6B9EF51D82 /* logo_catbreeeds.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = logo_catbreeeds.png; path = ../src/common/assets/img/logo_catbreeeds.png; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* pragma.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pragma.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = pragma/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = pragma/Info.plist; sourceTree = "<group>"; };
@@ -29,12 +31,10 @@
 		5DCACB8F33CDC322A6C60F78 /* libPods-pragma.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-pragma.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = pragma/AppDelegate.swift; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = pragma/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9D7373AAA06F4C67B0AEFD58 /* Roboto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto.ttf; path = ../src/common/assets/fonts/Roboto.ttf; sourceTree = "<group>"; };
+		E9BB9E8E41AA40B5A5C46BB5 /* image.d.ts */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = image.d.ts; path = ../src/common/assets/img/image.d.ts; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		9D7373AAA06F4C67B0AEFD58 /* Roboto.ttf */ = {isa = PBXFileReference; name = "Roboto.ttf"; path = "../src/common/assets/fonts/Roboto.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		E9BB9E8E41AA40B5A5C46BB5 /* image.d.ts */ = {isa = PBXFileReference; name = "image.d.ts"; path = "../src/common/assets/img/image.d.ts"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		0A28217D4CBB4B6B9EF51D82 /* logo_catbreeeds.png */ = {isa = PBXFileReference; name = "logo_catbreeeds.png"; path = "../src/common/assets/img/logo_catbreeeds.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		F5B66467856A4C56B8FB22C5 /* logo_catbreeeds_1.png */ = {isa = PBXFileReference; name = "logo_catbreeeds_1.png"; path = "../src/common/assets/img/logo_catbreeeds_1.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		036ED417B3A64804B9C2AF4E /* Roboto-Bold.ttf */ = {isa = PBXFileReference; name = "Roboto-Bold.ttf"; path = "../src/common/assets/fonts/Roboto-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F5B66467856A4C56B8FB22C5 /* logo_catbreeeds_1.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = logo_catbreeeds_1.png; path = ../src/common/assets/img/logo_catbreeeds_1.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +49,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F080C547563437790042D8F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9D7373AAA06F4C67B0AEFD58 /* Roboto.ttf */,
+				E9BB9E8E41AA40B5A5C46BB5 /* image.d.ts */,
+				0A28217D4CBB4B6B9EF51D82 /* logo_catbreeeds.png */,
+				F5B66467856A4C56B8FB22C5 /* logo_catbreeeds_1.png */,
+				036ED417B3A64804B9C2AF4E /* Roboto-Bold.ttf */,
+			);
+			name = Resources;
+			path = "";
+			sourceTree = "<group>";
+		};
 		13B07FAE1A68108700A75B9A /* pragma */ = {
 			isa = PBXGroup;
 			children = (
@@ -108,19 +121,6 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
-		};
-		0F080C547563437790042D8F /* Resources */ = {
-			isa = "PBXGroup";
-			children = (
-				9D7373AAA06F4C67B0AEFD58 /* Roboto.ttf */,
-				E9BB9E8E41AA40B5A5C46BB5 /* image.d.ts */,
-				0A28217D4CBB4B6B9EF51D82 /* logo_catbreeeds.png */,
-				F5B66467856A4C56B8FB22C5 /* logo_catbreeeds_1.png */,
-				036ED417B3A64804B9C2AF4E /* Roboto-Bold.ttf */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-			path = "";
 		};
 /* End PBXGroup section */
 

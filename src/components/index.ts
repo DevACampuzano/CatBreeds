@@ -1,6 +1,6 @@
 export * from "./CatCard";
 export * from "./Stars";
 export * from "./InputSearch";
-export * from "./NotResultsFound";
+export * from "./ErrorMessage";
 export * from "./Section";
 export * from "./Characteristic";
