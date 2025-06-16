@@ -22,6 +22,17 @@
 
 ## Aplicación móvil desarrollada con React Native para explorar razas de gatos, ver características detalladas y buscar razas específicas usando [TheCatAPI](https://developers.thecatapi.com/).
 
+---
+
+## 📚 Documentación Generada
+
+La documentación técnica completa del proyecto, generada automáticamente con [Deepwiki](https://deepwiki.com/).
+Consulta esta sección para detalles sobre la arquitectura, componentes, hooks y flujos internos de la app.
+
+- [Ver documentación Deepwiki](https://deepwiki.com/DevACampuzano/CatBreeds)
+
+---
+
 ## 📸 Demo de la App
 
 <div style="display:flex;gap:20px;justify-content: center; align-items:center">

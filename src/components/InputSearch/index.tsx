@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import { View, TextInput, TouchableOpacity } from "react-native";
 import Icons from "@react-native-vector-icons/ionicons";
 import gobalTheme from "../../styles/theme";
