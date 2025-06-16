@@ -35,15 +35,18 @@ Consulta esta sección para detalles sobre la arquitectura, componentes, hooks y
 
 ## 📸 Demo de la App
 
-<div style="display:flex;gap:20px;justify-content: center; align-items:center">
-  <div style="display:flex;gap:20px;justify-content: center; align-items:center; flex-direction:column">
-    <span style="font-size: 20px; font-weight:bold;">iOS</span>
+<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; justify-content: center; align-items: flex-start;">
+
+  <div style="display: flex; flex-direction: column; gap: 20px; align-items: center;">
+    <span style="font-size: 20px; font-weight: bold;">iOS</span>
     <img src="./resources/Demo-ios.gif" alt="Demo de CatBreeds iOS" width="300px" height="600px" />
   </div>
-  <div style="display:flex;gap:20px;justify-content: center; align-items:center; flex-direction:column">
-    <span style="font-size: 20px; font-weight:bold">Android</span>
+
+  <div style="display: flex; flex-direction: column; gap: 20px; align-items: center;">
+    <span style="font-size: 20px; font-weight: bold;">Android</span>
     <img src="./resources/Demo-android.gif" alt="Demo de CatBreeds Android" width="300px" height="600px" />
   </div>
+
 </div>
 <br/>
 <br/>
@@ -142,7 +145,7 @@ Disfruta de una vista rápida de las principales funcionalidades: exploración d
 
 ---
 
-## <span style="display: inline-flex; align-items: center; gap: 8px;"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffff"><path d="M320-240 80-480l240-240 57 57-184 184 183 183-56 56Zm320 0-57-57 184-184-183-183 56-56 240 240-240 240Z"/></svg>Fragmeentos de Código</span>
+## <span style="display: inline-flex; align-items: center; gap: 8px;"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffff"><path d="M320-240 80-480l240-240 57 57-184 184 183 183-56 56Zm320 0-57-57 184-184-183-183 56-56 240 240-240 240Z"/></svg>Fragmentos de Código</span>
 
 ### 1. Obtención de rezas con scroll infinito
 
