@@ -32,7 +32,7 @@ export const CatCard = ({
   });
 
   return (
-    <Animated.View entering={FadeInDown.delay(300 * index)}>
+    <Animated.View entering={FadeInDown.delay(200 * index)}>
       <TouchableOpacity
         style={styles.card}
         onPress={() => {
