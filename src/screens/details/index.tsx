@@ -7,6 +7,8 @@ import {
   ScrollView,
   TouchableOpacity,
   ActivityIndicator,
+  Platform,
+  StatusBar,
 } from "react-native";
 import Icons from "@react-native-vector-icons/ionicons";
 import gobalTheme from "../../styles/theme";
@@ -30,14 +32,19 @@ export const Details = ({ route }: Props) => {
   console.log(reference_image_id);
   const { data: catBreed, isLoading } = useQuery({
     queryKey: ["breeds-list", id],
-    queryFn: () => BreedsActions.getBreedById(id),
+    queryFn: ({ signal }) => BreedsActions.getBreedById(id, signal),
     enabled: !!id,
     staleTime: 1000 * 60 * 1,
   });
 
   if (isLoading) {
     return (
-      <View style={gobalTheme.container}>
+      <View
+        style={[
+          gobalTheme.container,
+          { justifyContent: "center", alignItems: "center" },
+        ]}
+      >
         <ActivityIndicator size="large" color={gobalTheme.primary.color} />
       </View>
     );
@@ -49,7 +56,16 @@ export const Details = ({ route }: Props) => {
 
   return (
     <View style={gobalTheme.container}>
-      <View style={[styles.header, { paddingTop: insets.top }]}>
+      <View
+        style={[
+          styles.header,
+          { paddingTop: Platform.OS === "ios" ? insets.top : 30 },
+        ]}
+      >
+        <StatusBar
+          barStyle="light-content"
+          backgroundColor={gobalTheme.primary.color}
+        />
         <TouchableOpacity
           onPress={() => navigation.goBack()}
           style={{

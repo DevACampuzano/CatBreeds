@@ -1,10 +1,10 @@
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
 import { BreedsActions } from "../../service";
+import { useCallback, useState } from "react";
+import useDebounce from "./useDebounce";
 
 export default () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [debouncedQuery, setDebouncedQuery] = useState("");
   const {
     data: { pages: listPages } = {},
     fetchNextPage,
@@ -13,32 +13,40 @@ export default () => {
     isLoading: isLoadingBreeds,
   } = useInfiniteQuery({
     queryKey: ["breeds-list"],
-    queryFn: ({ pageParam = 0 }) =>
-      BreedsActions.getBreeds(6, pageParam as number),
+    queryFn: ({ pageParam = 0, signal }) =>
+      BreedsActions.getBreeds(6, pageParam, signal),
     getNextPageParam: (_, allPages) => {
       return allPages.length;
     },
     initialPageParam: 0,
-    staleTime: 1000 * 60 * 5,
+    staleTime: 1000 * 60 * 60,
   });
 
-  useEffect(() => {
-    const idTimeout = setTimeout(() => {
-      setDebouncedQuery(searchQuery);
-    }, 300);
-    return () => clearTimeout(idTimeout);
-  }, [searchQuery]);
-
-  const { data: listFiltered = [], isLoading: isLoadingFiltered } = useQuery({
-    queryKey: ["breeds-list", debouncedQuery],
-    queryFn: () => BreedsActions.getSearchBreeds(debouncedQuery.trim()),
-    enabled: !!debouncedQuery,
-    staleTime: 1000 * 60 * 5,
+  const {
+    data: listFiltered = [],
+    isLoading: isLoadingFiltered,
+    refetch,
+  } = useQuery({
+    queryKey: ["breeds-list", searchQuery],
+    queryFn: ({ signal }) =>
+      BreedsActions.getSearchBreeds(searchQuery.trim(), signal),
+    enabled: !!searchQuery,
+    staleTime: 1000 * 60 * 60,
   });
+
+  const debouncedRefetch = useDebounce(refetch, 500);
+
+  const handleChangeSearchText = useCallback(
+    (search: string) => {
+      setSearchQuery(search);
+      debouncedRefetch();
+    },
+    [debouncedRefetch]
+  );
 
   return {
     searchQuery,
-    setSearchQuery,
+    handleChangeSearchText,
     listPages,
     fetchNextPage,
     hasNextPage,

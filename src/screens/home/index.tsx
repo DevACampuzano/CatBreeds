@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import {
   View,
   Image,
@@ -8,6 +9,7 @@ import {
   Platform,
   TouchableWithoutFeedback,
   Keyboard,
+  StatusBar,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -31,7 +33,7 @@ export const Home = () => {
     listFiltered,
     listPages,
     searchQuery,
-    setSearchQuery,
+    handleChangeSearchText,
   } = useBreeds();
 
   return (
@@ -41,7 +43,16 @@ export const Home = () => {
         behavior={Platform.OS === "ios" ? "padding" : undefined}
       >
         <View style={gobalTheme.container}>
-          <View style={[gobalTheme.header, { paddingTop: insets.top }]}>
+          <StatusBar
+            barStyle="light-content"
+            backgroundColor={gobalTheme.primary.color}
+          />
+          <View
+            style={[
+              gobalTheme.header,
+              { paddingTop: Platform.OS === "ios" ? insets.top : 30 },
+            ]}
+          >
             <View style={styles.logoContainer}>
               <Image
                 source={logo_catbreeeds}
@@ -53,11 +64,11 @@ export const Home = () => {
 
           <InputSearch
             searchQuery={searchQuery}
-            setSearchQuery={setSearchQuery}
+            setSearchQuery={handleChangeSearchText}
             placeholder="Search for cat breed..."
           />
 
-          {!searchQuery.trim() || !searchQuery.trim() ? (
+          {!searchQuery.trim() ? (
             <FlatList
               data={listPages?.flatMap((page) => page.data) ?? []}
               keyboardShouldPersistTaps="handled"

@@ -26,13 +26,16 @@ export const CatCard = ({
 }) => {
   const { data: image, isLoading } = useQuery({
     queryKey: ["breeds-image", item.reference_image_id],
-    queryFn: () => BreedsActions.getImageById(item.reference_image_id),
+    queryFn: ({ signal }) =>
+      BreedsActions.getImageById(item.reference_image_id, signal),
     enabled: !!item.reference_image_id,
     staleTime: 1000 * 60 * 60,
   });
 
   return (
-    <Animated.View entering={FadeInDown.delay(200 * index)}>
+    <Animated.View
+      entering={index < 6 ? FadeInDown.delay(200 * index) : undefined}
+    >
       <TouchableOpacity
         style={styles.card}
         onPress={() => {
@@ -46,10 +49,9 @@ export const CatCard = ({
         activeOpacity={0.8}
       >
         <Animated.Image
-          source={{ uri: image?.url }}
+          source={isLoading ? logo_catbreeeds : { uri: image?.url }}
           style={styles.catImage}
           sharedTransitionTag={item.reference_image_id}
-          defaultSource={logo_catbreeeds}
         />
         <View style={styles.cardContent}>
           <Text style={styles.catName}>{item.name}</Text>
@@ -62,7 +64,7 @@ export const CatCard = ({
             <Text style={styles.origin}>{item.origin}</Text>
           </View>
           <View style={styles.intelligenceRow}>
-            <Text style={styles.intelligenceLabel}>Inteligencia:</Text>
+            <Text style={styles.intelligenceLabel}>Intelligence:</Text>
             <View style={styles.starsContainer}>
               <Stars rating={item.intelligence} />
             </View>
