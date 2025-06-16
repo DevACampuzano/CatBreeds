@@ -35,14 +35,14 @@ Consulta esta sección para detalles sobre la arquitectura, componentes, hooks y
 
 ## 📸 Demo de la App
 
-
-
 <div align="center">
 
 ### iOS
+
 <img src="./resources/Demo-ios.gif" alt="Demo de CatBreeds iOS" width="300px" height="600px" />
 
 ### Android
+
 <img src="./resources/Demo-android.gif" alt="Demo de CatBreeds Android" width="300px" height="600px" />
 
 </div>
@@ -146,7 +146,7 @@ Disfruta de una vista rápida de las principales funcionalidades: exploración d
 
 ## <span style="display: inline-flex; align-items: center; gap: 8px;"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffff"><path d="M320-240 80-480l240-240 57 57-184 184 183 183-56 56Zm320 0-57-57 184-184-183-183 56-56 240 240-240 240Z"/></svg>Fragmentos de Código</span>
 
-### 1. Obtención de rezas con scroll infinito
+### 1. Obtención de razas con scroll infinito
 
 ```ts
 // src/common/hooks/useBreeds.ts
@@ -193,7 +193,7 @@ const handleChangeSearchText = useCallback(
 );
 ```
 
-### 3. Animaciones de compontes
+### 3. Animaciones de componentes
 
 - Componente CatCard
 
@@ -202,9 +202,7 @@ const handleChangeSearchText = useCallback(
   ```
 
   ```hbs
-  <Animated.View
-    entering={index 6 ? FadeInDown.delay( 200* index) : undefined}
-  ></Animated.View>
+  <Animated.View entering={index 6 ? FadeInDown.delay( 200 * index ): undefined } />
   ```
 
 - Componente Section
@@ -212,10 +210,7 @@ const handleChangeSearchText = useCallback(
   // src/components/Section/index.tsx
   ```
   ```hbs
-  <Animated.View
-    style={styles.section}
-    entering={FadeInDown.delay( 300 * index)}
-  ></Animated.View>
+  <Animated.View style={styles.section} entering={FadeInDown.delay( 300 * index)} />
   ```
 
 ---
@@ -237,7 +232,7 @@ La app usa los endpoints de [TheCatAPI](https://developers.thecatapi.com/)
 | ---------------- | ------ | --------------------------------------------- |
 | `/breeds`        | GET    | Obtiene el listado por paginado de las razas  |
 | `/breeds/search` | GET    | Busca razas por nombre                        |
-| `/breeds/{id}`   | GET    | Obtiene detalles específicos de una raza      |
+| `/breeds/{id}`   | GET    | Obtiene detalles específicos de una raza       |
 | `/images/{id}`   | GET    | Obtiene imágenes de referencia para las razas |
 
 ---
