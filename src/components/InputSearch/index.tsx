@@ -1,4 +1,4 @@
-import { View, TextInput } from "react-native";
+import { View, TextInput, TouchableOpacity } from "react-native";
 import Icons from "@react-native-vector-icons/ionicons";
 import gobalTheme from "../../styles/theme";
 import styles from "./styles";
@@ -18,6 +18,14 @@ export const InputSearch = ({
         value={searchQuery}
         onChangeText={setSearchQuery}
       />
+      <TouchableOpacity activeOpacity={0.8} onPress={() => setSearchQuery("")}>
+        <Icons
+          name="close-sharp"
+          size={20}
+          color={gobalTheme.secondaryText.color}
+          style={{ opacity: searchQuery ? 1 : 0 }}
+        />
+      </TouchableOpacity>
     </View>
   );
 };

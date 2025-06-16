@@ -20,7 +20,23 @@
 ![Android](https://img.shields.io/badge/Android-3DDC84?logo=android&logoColor=white)
 ![iOS](https://img.shields.io/badge/iOS-000000?logo=apple&logoColor=F0F0F0)
 
-Aplicación móvil desarrollada con React Native para explorar razas de gatos, ver características detalladas y buscar razas específicas usando [TheCatAPI](https://developers.thecatapi.com/).
+## Aplicación móvil desarrollada con React Native para explorar razas de gatos, ver características detalladas y buscar razas específicas usando [TheCatAPI](https://developers.thecatapi.com/).
+
+## 📸 Demo de la App
+
+<div style="display:flex;gap:20px;justify-content: center; align-items:center">
+  <div style="display:flex;gap:20px;justify-content: center; align-items:center; flex-direction:column">
+    <span style="font-size: 20px; font-weight:bold;">iOS</span>
+    <img src="./resources/Demo-ios.gif" alt="Demo de CatBreeds iOS" width="300px" height="600px" />
+  </div>
+  <div style="display:flex;gap:20px;justify-content: center; align-items:center; flex-direction:column">
+    <span style="font-size: 20px; font-weight:bold">Android</span>
+    <img src="./resources/Demo-android.gif" alt="Demo de CatBreeds Android" width="300px" height="600px" />
+  </div>
+</div>
+<br/>
+<br/>
+Disfruta de una vista rápida de las principales funcionalidades: exploración de razas, búsqueda, detalles y animaciones.
 
 ---
 
@@ -82,6 +98,8 @@ Aplicación móvil desarrollada con React Native para explorar razas de gatos, v
      bun ios
      ```
 
+---
+
 ## 📂 Estructura del proyecto
 
 ```
@@ -99,6 +117,8 @@ Aplicación móvil desarrollada con React Native para explorar razas de gatos, v
     │   └── styles/           # Temas globales
 ```
 
+---
+
 ## 🔨 Tecnologías Utilizadas
 
 - React Native (v0.80)
@@ -108,6 +128,8 @@ Aplicación móvil desarrollada con React Native para explorar razas de gatos, v
 - React Native Reanimated - Animaciones
 - Axios - Preticiones HTTP
 - React Native Vector Icons (ionicons) - paquete de iconos
+
+---
 
 ## <span style="display: inline-flex; align-items: center; gap: 8px;"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffff"><path d="M320-240 80-480l240-240 57 57-184 184 183 183-56 56Zm320 0-57-57 184-184-183-183 56-56 240 240-240 240Z"/></svg>Fragmeentos de Código</span>
 
@@ -166,17 +188,9 @@ const handleChangeSearchText = useCallback(
   // src/components/CatCard/index.tsx
   ```
 
-  ```html
+  ```hbs
   <Animated.View
-    entering="{index"
-    <
-    6
-    ?
-    FadeInDown.delay(200
-    *
-    index)
-    :
-    undefined}
+    entering={index 6 ? FadeInDown.delay( 200* index) : undefined}
   ></Animated.View>
   ```
 
@@ -184,14 +198,14 @@ const handleChangeSearchText = useCallback(
   ```js
   // src/components/Section/index.tsx
   ```
-  ```html
+  ```hbs
   <Animated.View
-    style="{styles.section}"
-    entering="{FadeInDown.delay(300"
-    *
-    index)}
+    style={styles.section}
+    entering={FadeInDown.delay( 300 * index)}
   ></Animated.View>
   ```
+
+---
 
 ## 🎨 Componentes de UI
 
@@ -199,6 +213,8 @@ const handleChangeSearchText = useCallback(
 - Stars: Puntuación con estrellas interactivas
 - InputSearch: Barra de búsqueda
 - Section: Secciones plegables en pantalla de detalles
+
+---
 
 ## 📡 Integración con API
 
@@ -210,3 +226,18 @@ La app usa los endpoints de [TheCatAPI](https://developers.thecatapi.com/)
 | `/breeds/search` | GET    | Busca razas por nombre                        |
 | `/breeds/{id}`   | GET    | Obtiene detalles específicos de una raza      |
 | `/images/{id}`   | GET    | Obtiene imágenes de referencia para las razas |
+
+---
+
+## 🛠️ Roadmap y Mejoras Futuras
+
+- Implementar favoritos localmente
+- Añadir comparador de razas
+- Internacionalización / Multilenguaje (i18n)
+- Modo oscuro
+
+---
+
+## 🙏 Agradecimientos
+
+Agradezco a Pragma por la oportunidad de presentar esta prueba técnica y demostrar mis habilidades en desarrollo móvil. Ha sido un reto enriquecedor y valioso para mi crecimiento profesional.

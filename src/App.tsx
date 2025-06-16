@@ -1,11 +1,13 @@
 import "react-native-gesture-handler";
-import { NavigationContainer } from "@react-navigation/native";
-import { AppRouter } from "./routes";
-import { TansStackProvider } from "./common/store/TansStack";
+import { Image, Platform } from "react-native";
 import { StatusBar, View, StyleSheet } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+//local imports
+import { AppRouter } from "./routes";
 import gobalTheme from "./styles/theme";
 import { ErrorMessage } from "./components";
-import NetInfo from "@react-native-community/netinfo";
+import { TansStackProvider } from "./common/store/TansStack";
+import useConnection, { AppStateType } from "./common/hooks/useConnection";
 
 const AppState = () => (
   <NavigationContainer>
@@ -29,9 +31,29 @@ const ConnectedApp = () => (
 );
 
 const App = () => {
-  const netInfo = NetInfo.useNetInfo();
+  const appState = useConnection();
 
-  return netInfo.isConnected ? <AppState /> : <ConnectedApp />;
+  switch (appState) {
+    case AppStateType.CONNECTED:
+      return <AppState />;
+    case AppStateType.CONNECING:
+      const splash =
+        Platform.OS === "ios"
+          ? require("./common/assets/img/splash.gif")
+          : require("./common/assets/img/logo_catbreeeds.png");
+      return (
+        <View style={[gobalTheme.container, styles.centered]}>
+          <StatusBar
+            barStyle="light-content"
+            backgroundColor={styles.centered.backgroundColor}
+          />
+
+          <Image source={splash} style={styles.video} resizeMode="contain" />
+        </View>
+      );
+    case AppStateType.DISCONNECTED:
+      return <ConnectedApp />;
+  }
 };
 
 export default App;
@@ -40,5 +62,10 @@ const styles = StyleSheet.create({
   centered: {
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: "#5C348A",
+  },
+  video: {
+    width: 350,
+    height: 350,
   },
 });

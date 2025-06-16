@@ -70,6 +70,7 @@ export const Details = ({ route }: Props) => {
           style={{
             padding: 5,
           }}
+          activeOpacity={0.8}
         >
           <Icons name="arrow-back" size={24} color="white" />
         </TouchableOpacity>
