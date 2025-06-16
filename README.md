@@ -35,19 +35,18 @@ Consulta esta sección para detalles sobre la arquitectura, componentes, hooks y
 
 ## 📸 Demo de la App
 
-<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; justify-content: center; align-items: flex-start;">
 
-  <div style="display: flex; flex-direction: column; gap: 20px; align-items: center;">
-    <span style="font-size: 20px; font-weight: bold;">iOS</span>
-    <img src="./resources/Demo-ios.gif" alt="Demo de CatBreeds iOS" width="300px" height="600px" />
-  </div>
 
-  <div style="display: flex; flex-direction: column; gap: 20px; align-items: center;">
-    <span style="font-size: 20px; font-weight: bold;">Android</span>
-    <img src="./resources/Demo-android.gif" alt="Demo de CatBreeds Android" width="300px" height="600px" />
-  </div>
+<div align="center">
+
+### iOS
+<img src="./resources/Demo-ios.gif" alt="Demo de CatBreeds iOS" width="300px" height="600px" />
+
+### Android
+<img src="./resources/Demo-android.gif" alt="Demo de CatBreeds Android" width="300px" height="600px" />
 
 </div>
+
 <br/>
 <br/>
 Disfruta de una vista rápida de las principales funcionalidades: exploración de razas, búsqueda, detalles y animaciones.
