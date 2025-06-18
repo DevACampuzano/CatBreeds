@@ -7,7 +7,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 const lightColors = {
   primary: "#5e3b89",
   accent: "#9F78DC",
-  background: "f8f9fa",
+  background: "#f8f9fa",
   surface: "#ffffff",
   text: "#333333",
   textSecondary: "#6c757d",
