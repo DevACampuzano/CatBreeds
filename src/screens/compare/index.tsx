@@ -7,6 +7,9 @@ import {
   StyleSheet,
   Text,
   View,
+  KeyboardAvoidingView,
+  TouchableWithoutFeedback,
+  Keyboard,
 } from "react-native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import Animated from "react-native-reanimated";
@@ -73,203 +76,227 @@ export const Compare = ({ route, navigation }: Props) => {
   }
 
   return (
-    <View style={gobalTheme.container}>
-      <Header
-        title={`${data.name} vs ${secondCat ? secondCat?.name : searchQuery}`}
-        onBackPress={() => navigation.goBack()}
-      />
-      <View style={styles.imageContainer}>
-        <Animated.Image
-          source={uri ? { uri: uri } : placeholderUrl}
-          style={[styles.catImage, { borderBottomLeftRadius: 20 }]}
-          sharedTransitionTag={reference_image_id}
-          resizeMode="stretch"
-        />
-        <Text style={styles.vs}>VS</Text>
-        <Image
-          source={secondCat ? { uri: image?.url } : placeholderUrl}
-          style={[
-            styles.catImage,
-            {
-              borderBottomRightRadius: 20,
-            },
-          ]}
-          resizeMethod="none"
-          resizeMode="stretch"
-        />
-      </View>
-      <ScrollView
-        style={gobalTheme.container}
-        showsVerticalScrollIndicator={false}
-      >
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            paddingHorizontal: 15,
-            paddingVertical: 15,
-            gap: 10,
-          }}
-        >
-          <View style={{ width: "50%" }}>
-            {/* <Animated.View
-              style={styles.basicInfo}
-              entering={FadeInDown.delay(300)}
-            >
-              <Text style={styles.catName}>{data.name}</Text>
-            </Animated.View> */}
-
-            <Section title="Characteristics" index={4}>
-              <View style={{ gap: 15 }}>
-                <Characteristic
-                  label="Adaptability"
-                  value={data.adaptability}
-                />
-                <Characteristic
-                  label="Affection Level"
-                  value={data.affection_level}
-                />
-                <Characteristic
-                  label="Child Friendly"
-                  value={data.child_friendly}
-                />
-                <Characteristic
-                  label="Child Friendly"
-                  value={data.child_friendly}
-                />
-                <Characteristic
-                  label="Dog Friendly"
-                  value={data.dog_friendly}
-                />
-                <Characteristic
-                  label="Energy Level"
-                  value={data.energy_level}
-                />
-                <Characteristic label="Grooming" value={data?.grooming} />
-                <Characteristic
-                  label="Health Issues"
-                  value={data.health_issues}
-                />
-                <Characteristic
-                  label="Intelligence"
-                  value={data.intelligence}
-                />
-                <Characteristic
-                  label="Shedding Level"
-                  value={data.shedding_level}
-                />
-                <Characteristic
-                  label="Social Needs"
-                  value={data.social_needs}
-                />
-                <Characteristic
-                  label="Stranger Friendly"
-                  value={data.stranger_friendly}
-                />
-                <Characteristic
-                  label="Vocalisation"
-                  value={data.vocalisation}
-                />
-              </View>
-            </Section>
+    <KeyboardAvoidingView
+      style={[gobalTheme.container]}
+      behavior={Platform.OS === "ios" ? "padding" : undefined}
+    >
+      <View style={gobalTheme.container}>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+          <View>
+            <Header
+              title={`${data.name} vs ${
+                secondCat ? secondCat?.name : searchQuery
+              }`}
+              onBackPress={() => navigation.goBack()}
+            />
+            <View style={styles.imageContainer}>
+              <Animated.Image
+                source={uri ? { uri: uri } : placeholderUrl}
+                style={[styles.catImage, { borderBottomLeftRadius: 20 }]}
+                sharedTransitionTag={reference_image_id}
+                resizeMode="stretch"
+              />
+              <Text style={styles.vs}>VS</Text>
+              <Image
+                source={secondCat ? { uri: image?.url } : placeholderUrl}
+                style={[
+                  styles.catImage,
+                  {
+                    borderBottomRightRadius: 20,
+                  },
+                ]}
+                resizeMethod="none"
+                resizeMode="stretch"
+              />
+            </View>
           </View>
-          <View style={{ width: "50%", paddingHorizontal: secondCat ? 0 : 15 }}>
-            {!secondCat ? (
-              <>
-                <InputSearch
-                  searchQuery={searchQuery}
-                  setSearchQuery={handleChangeSearchText}
-                  placeholder="Search for cat breed..."
-                  styles={{ marginBottom: 20 }}
-                />
-
-                {isLoadingFiltered && <SkeletonLoader />}
-                {!isLoadingFiltered && !listFiltered && (
-                  <ErrorMessage text="No results found" />
-                )}
-                {listFiltered &&
-                  listFiltered.length > 0 &&
-                  listFiltered.map((item) => (
-                    <CatCardVertical
-                      item={item}
-                      onPress={(cat) => {
-                        setSecondCat(cat as CatBreed);
-                      }}
-                      key={item.id}
-                    />
-                  ))}
-              </>
-            ) : (
-              <>
-                {/* <Animated.View
-                  style={styles.basicInfo}
-                  entering={FadeInDown.delay(300)}
-                >
-                  <Text style={styles.catName}>{secondCat.name}</Text>
-                </Animated.View> */}
-
+        </TouchableWithoutFeedback>
+        <ScrollView
+          style={[gobalTheme.container]}
+          showsVerticalScrollIndicator={false}
+        >
+          <TouchableWithoutFeedback
+            onPress={Keyboard.dismiss}
+            accessible={false}
+          >
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "space-between",
+                paddingHorizontal: 15,
+                paddingVertical: 15,
+                gap: 10,
+              }}
+            >
+              <View style={{ width: "50%" }}>
                 <Section title="Characteristics" index={4}>
                   <View style={{ gap: 15 }}>
                     <Characteristic
                       label="Adaptability"
-                      value={secondCat.adaptability}
+                      value={data.adaptability}
+                      style={{ flexDirection: "column", gap: 5 }}
                     />
                     <Characteristic
                       label="Affection Level"
-                      value={secondCat.affection_level}
+                      value={data.affection_level}
+                      style={{ flexDirection: "column", gap: 5 }}
                     />
                     <Characteristic
                       label="Child Friendly"
-                      value={secondCat.child_friendly}
-                    />
-                    <Characteristic
-                      label="Child Friendly"
-                      value={secondCat.child_friendly}
+                      value={data.child_friendly}
+                      style={{ flexDirection: "column", gap: 5 }}
                     />
                     <Characteristic
                       label="Dog Friendly"
-                      value={secondCat.dog_friendly}
+                      value={data.dog_friendly}
+                      style={{ flexDirection: "column", gap: 5 }}
                     />
                     <Characteristic
                       label="Energy Level"
-                      value={secondCat.energy_level}
+                      value={data.energy_level}
+                      style={{ flexDirection: "column", gap: 5 }}
                     />
                     <Characteristic
                       label="Grooming"
-                      value={secondCat.grooming}
+                      value={data?.grooming}
+                      style={{ flexDirection: "column", gap: 5 }}
                     />
                     <Characteristic
                       label="Health Issues"
-                      value={secondCat.health_issues}
+                      value={data.health_issues}
+                      style={{ flexDirection: "column", gap: 5 }}
                     />
                     <Characteristic
                       label="Intelligence"
-                      value={secondCat.intelligence}
+                      value={data.intelligence}
+                      style={{ flexDirection: "column", gap: 5 }}
                     />
                     <Characteristic
                       label="Shedding Level"
-                      value={secondCat.shedding_level}
+                      value={data.shedding_level}
+                      style={{ flexDirection: "column", gap: 5 }}
                     />
                     <Characteristic
                       label="Social Needs"
-                      value={secondCat.social_needs}
+                      value={data.social_needs}
+                      style={{ flexDirection: "column", gap: 5 }}
                     />
                     <Characteristic
                       label="Stranger Friendly"
-                      value={secondCat.stranger_friendly}
+                      value={data.stranger_friendly}
+                      style={{ flexDirection: "column", gap: 5 }}
                     />
                     <Characteristic
                       label="Vocalisation"
-                      value={secondCat.vocalisation}
+                      value={data.vocalisation}
+                      style={{ flexDirection: "column", gap: 5 }}
                     />
                   </View>
                 </Section>
-              </>
-            )}
-          </View>
-        </View>
-      </ScrollView>
-    </View>
+              </View>
+              <View
+                style={{ width: "50%", paddingHorizontal: secondCat ? 0 : 15 }}
+              >
+                {!secondCat ? (
+                  <>
+                    <InputSearch
+                      searchQuery={searchQuery}
+                      setSearchQuery={handleChangeSearchText}
+                      placeholder="Search for cat breed..."
+                      style={{ marginBottom: 20 }}
+                    />
+
+                    {isLoadingFiltered && <SkeletonLoader />}
+                    {!isLoadingFiltered && !listFiltered && (
+                      <ErrorMessage text="No results found" />
+                    )}
+                    {listFiltered &&
+                      listFiltered.length > 0 &&
+                      listFiltered.map((item) => (
+                        <CatCardVertical
+                          item={item}
+                          onPress={(cat) => {
+                            setSecondCat(cat as CatBreed);
+                          }}
+                          key={item.id}
+                        />
+                      ))}
+                  </>
+                ) : (
+                  <>
+                    <Section title="Characteristics" index={4}>
+                      <View style={{ gap: 15 }}>
+                        <Characteristic
+                          label="Adaptability"
+                          value={secondCat.adaptability}
+                          style={{ flexDirection: "column", gap: 5 }}
+                        />
+                        <Characteristic
+                          label="Affection Level"
+                          value={secondCat.affection_level}
+                          style={{ flexDirection: "column", gap: 5 }}
+                        />
+                        <Characteristic
+                          label="Child Friendly"
+                          value={secondCat.child_friendly}
+                          style={{ flexDirection: "column", gap: 5 }}
+                        />
+
+                        <Characteristic
+                          label="Dog Friendly"
+                          value={secondCat.dog_friendly}
+                          style={{ flexDirection: "column", gap: 5 }}
+                        />
+                        <Characteristic
+                          label="Energy Level"
+                          value={secondCat.energy_level}
+                          style={{ flexDirection: "column", gap: 5 }}
+                        />
+                        <Characteristic
+                          label="Grooming"
+                          value={secondCat.grooming}
+                          style={{ flexDirection: "column", gap: 5 }}
+                        />
+                        <Characteristic
+                          label="Health Issues"
+                          value={secondCat.health_issues}
+                          style={{ flexDirection: "column", gap: 5 }}
+                        />
+                        <Characteristic
+                          label="Intelligence"
+                          value={secondCat.intelligence}
+                          style={{ flexDirection: "column", gap: 5 }}
+                        />
+                        <Characteristic
+                          label="Shedding Level"
+                          value={secondCat.shedding_level}
+                          style={{ flexDirection: "column", gap: 5 }}
+                        />
+                        <Characteristic
+                          label="Social Needs"
+                          value={secondCat.social_needs}
+                          style={{ flexDirection: "column", gap: 5 }}
+                        />
+                        <Characteristic
+                          label="Stranger Friendly"
+                          value={secondCat.stranger_friendly}
+                          style={{ flexDirection: "column", gap: 5 }}
+                        />
+                        <Characteristic
+                          label="Vocalisation"
+                          value={secondCat.vocalisation}
+                          style={{ flexDirection: "column", gap: 5 }}
+                        />
+                      </View>
+                    </Section>
+                  </>
+                )}
+              </View>
+            </View>
+          </TouchableWithoutFeedback>
+        </ScrollView>
+      </View>
+    </KeyboardAvoidingView>
   );
 };
 

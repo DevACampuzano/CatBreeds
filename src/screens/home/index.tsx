@@ -77,7 +77,7 @@ export const Home = () => {
             searchQuery={searchQuery}
             setSearchQuery={handleChangeSearchText}
             placeholder="Search for cat breed..."
-            styles={styles.search}
+            style={styles.search}
           />
 
           {!searchQuery.trim() ? (

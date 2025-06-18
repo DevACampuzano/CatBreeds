@@ -8,10 +8,10 @@ export const InputSearch = ({
   searchQuery,
   setSearchQuery,
   placeholder,
-  styles: customStyles,
+  style,
 }: InputSearchProps) => {
   return (
-    <View style={[styles.searchContainer, customStyles]}>
+    <View style={[styles.searchContainer, style]}>
       <Icons name="search" size={20} color={gobalTheme.secondaryText.color} />
       <TextInput
         style={styles.searchInput}

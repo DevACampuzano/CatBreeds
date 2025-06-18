@@ -168,10 +168,6 @@ export const Details = ({ route }: Props) => {
                 label="Child Friendly"
                 value={data.child_friendly}
               />
-              <Characteristic
-                label="Child Friendly"
-                value={data.child_friendly}
-              />
               <Characteristic label="Dog Friendly" value={data.dog_friendly} />
               <Characteristic label="Energy Level" value={data.energy_level} />
               <Characteristic label="Grooming" value={data?.grooming} />
