@@ -35,7 +35,6 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 20,
-    height: 20,
     fontFamily: "Roboto-Bold",
     fontWeight: "bold",
     color: "#5e3b89",

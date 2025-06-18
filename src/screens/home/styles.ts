@@ -14,6 +14,10 @@ const styles = StyleSheet.create({
     height: 80,
     tintColor: "white",
   },
+  search: {
+    marginHorizontal: 20,
+    marginVertical: 20,
+  },
 });
 
 export default styles;

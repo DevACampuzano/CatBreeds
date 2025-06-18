@@ -5,7 +5,6 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     padding: 15,
     marginBottom: 15,
-    flexDirection: "row",
     alignItems: "center",
     shadowColor: "#000",
     shadowOffset: {
@@ -17,8 +16,8 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   catImage: {
-    width: 80,
-    height: 80,
+    width: "100%",
+    height: 100,
     borderRadius: 12,
     backgroundColor: "#f0f0f0",
   },
@@ -43,19 +42,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: "#6c757d",
     marginLeft: 5,
-  },
-  intelligenceRow: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  intelligenceLabel: {
-    fontFamily: "Roboto",
-    fontSize: 14,
-    color: "#6c757d",
-    marginRight: 8,
-  },
-  starsContainer: {
-    flexDirection: "row",
   },
 });
 
@@ -84,13 +70,6 @@ export const stylesSkeleton = StyleSheet.create({
     backgroundColor: "#e1e1e1",
     borderRadius: 12,
   },
-  skeletonStar: {
-    width: 14,
-    height: 14,
-    backgroundColor: "#e1e1e1",
-    borderRadius: 7,
-    marginRight: 2,
-  },
   shimmerOverlay: {
     position: "absolute",
     top: 0,
@@ -100,4 +79,5 @@ export const stylesSkeleton = StyleSheet.create({
     backgroundColor: "rgba(255, 255, 255, 0.4)",
   },
 });
+
 export default styles;

@@ -19,7 +19,7 @@ import {
   GestureHandlerRootView,
 } from "react-native-gesture-handler";
 
-export const CatCard = ({ item, navigation, index }: CatCardProps) => {
+export const CatCard = ({ item, onPress, index }: CatCardProps) => {
   const { data: image, isLoading } = useQuery({
     queryKey: ["breeds-image", item.reference_image_id],
     queryFn: ({ signal }) =>
@@ -49,13 +49,7 @@ export const CatCard = ({ item, navigation, index }: CatCardProps) => {
     >
       <TouchableOpacity
         style={styles.card}
-        onPress={() => {
-          navigation.navigate("Details", {
-            id: item.id,
-            uri: image?.url ?? "",
-            reference_image_id: item.reference_image_id,
-          });
-        }}
+        onPress={() => onPress(item, image?.url)}
         activeOpacity={0.8}
       >
         <GestureHandlerRootView style={{ zIndex: 100 }}>

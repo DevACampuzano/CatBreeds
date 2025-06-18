@@ -4,3 +4,5 @@ export * from "./InputSearch";
 export * from "./ErrorMessage";
 export * from "./Section";
 export * from "./Characteristic";
+export * from "./Header";
+export * from "./CatCardVertical";

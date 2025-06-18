@@ -1,26 +1,26 @@
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
-  header: {
-    backgroundColor: "#5e3b89",
-    paddingVertical: 15,
-    paddingHorizontal: 20,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-  },
-  headerTitle: {
-    fontSize: 20,
-    fontFamily: "Roboto-Bold",
-    fontWeight: "bold",
-    color: "white",
-    flex: 1,
-    textAlign: "center",
+  favoriteButton: {
+    position: "absolute",
+    zIndex: 1,
+    backgroundColor: "rgba(255, 255, 255, 0.8)",
+    borderRadius: 50,
+    padding: 5,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   imageContainer: {
     alignItems: "center",
     height: 400,
     marginBottom: 15,
+    position: "relative",
   },
   catImage: {
     width: "100%",
@@ -34,7 +34,6 @@ const styles = StyleSheet.create({
   },
   catName: {
     fontSize: 28,
-    height: 28,
     fontWeight: "bold",
     color: "#5e3b89",
     fontFamily: "Roboto-Bold",

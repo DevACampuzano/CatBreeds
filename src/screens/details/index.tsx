@@ -5,36 +5,49 @@ import {
   ScrollView,
   TouchableOpacity,
   ActivityIndicator,
-  Platform,
-  StatusBar,
 } from "react-native";
-import { useQuery } from "@tanstack/react-query";
 import Icons from "@react-native-vector-icons/ionicons";
 import { useNavigation } from "@react-navigation/native";
 import Animated, { FadeInDown } from "react-native-reanimated";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 //local imports
 import styles from "./styles";
 import gobalTheme from "../../styles/theme";
-import { BreedsActions } from "../../service";
 import { Section } from "../../components/Section/index";
-import { Characteristic, ErrorMessage } from "../../components";
+import { Characteristic, ErrorMessage, Header } from "../../components";
 import { AppNavigationProp, AppStackParamList } from "../../routes";
 import placeholderUrl from "../../common/assets/img/logo_catbreeeds.png";
+import { useFavoriteStore } from "../../common/store";
+import { useEffect, useState } from "react";
+import { useBreed } from "../../common/hooks";
 
 type Props = NativeStackScreenProps<AppStackParamList, "Details">;
 
 export const Details = ({ route }: Props) => {
   const { id, uri, reference_image_id } = route.params;
-  const insets = useSafeAreaInsets();
   const navigation = useNavigation<AppNavigationProp>();
-  const { data, isLoading } = useQuery({
-    queryKey: ["breeds-list", id],
-    queryFn: ({ signal }) => BreedsActions.getBreedById(id, signal),
-    enabled: !!id,
-    staleTime: 1000 * 60 * 1,
-  });
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  const { data, isLoading } = useBreed(id);
+  const favorite = useFavoriteStore((state) => state.favorites);
+  const handleAddFavorite = useFavoriteStore((state) => state.addFavorite);
+  const handleRemoveFavorite = useFavoriteStore(
+    (state) => state.removeFavorite
+  );
+
+  const toggleFavorite = () => {
+    if (isFavorite) {
+      handleRemoveFavorite(id);
+    } else {
+      handleAddFavorite(id);
+    }
+    setIsFavorite((prev) => !prev);
+  };
+
+  useEffect(() => {
+    const isFav = favorite.some((fav) => fav === id);
+    setIsFavorite(isFav);
+  }, [favorite, id]);
 
   if (isLoading) {
     return (
@@ -55,40 +68,34 @@ export const Details = ({ route }: Props) => {
 
   return (
     <View style={gobalTheme.container}>
-      <View
-        style={[
-          styles.header,
-          { paddingTop: Platform.OS === "ios" ? insets.top : 30 },
-        ]}
-      >
-        <StatusBar
-          barStyle="light-content"
-          backgroundColor={gobalTheme.primary.color}
-        />
-        <TouchableOpacity
-          onPress={() => navigation.goBack()}
-          style={{
-            padding: 5,
-          }}
-          activeOpacity={0.8}
-        >
-          <Icons name="arrow-back" size={24} color="white" />
-        </TouchableOpacity>
-        <Text style={styles.headerTitle}>{data.name}</Text>
-        <View
-          style={{
-            width: 30,
-          }}
-        />
-      </View>
-
+      <Header title={data.name} onBackPress={() => navigation.goBack()} />
       <View style={styles.imageContainer}>
+        <TouchableOpacity
+          style={[styles.favoriteButton, [{ top: 10, right: 10 }]]}
+          activeOpacity={0.8}
+          onPress={toggleFavorite}
+        >
+          <Icons
+            name={isFavorite ? "heart" : "heart-outline"}
+            size={25}
+            color={gobalTheme.accent.color}
+          />
+        </TouchableOpacity>
         <Animated.Image
           source={uri ? { uri: uri } : placeholderUrl}
           style={styles.catImage}
           sharedTransitionTag={reference_image_id}
           resizeMode="cover"
         />
+        <TouchableOpacity
+          style={[styles.favoriteButton, { bottom: 10, right: 10 }]}
+          activeOpacity={0.8}
+          onPress={() =>
+            navigation.navigate("Compare", { id, uri, reference_image_id })
+          }
+        >
+          <Icons name="add-outline" size={25} color={gobalTheme.accent.color} />
+        </TouchableOpacity>
       </View>
       <ScrollView
         style={gobalTheme.container}

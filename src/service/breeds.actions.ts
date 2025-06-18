@@ -6,10 +6,12 @@ export const getSearchBreeds = async (q: string, signal?: AbortSignal) => {
     throw new Error("Search query cannot be empty");
   }
   params.append("q", q);
-  return await theCatApi.get<CatBreed[]>(
+
+  const response = await theCatApi.get<CatBreed[]>(
     `/breeds/search?${params.toString()}`,
     { signal }
   );
+  return response.data;
 };
 
 export const getBreeds = async (
@@ -20,9 +22,14 @@ export const getBreeds = async (
   const params = new URLSearchParams();
   params.append("limit", limit.toString());
   params.append("page", page.toString());
-  return await theCatApi.get<CatBreed[]>(`/breeds?${params.toString()}`, {
-    signal,
-  });
+
+  const response = await theCatApi.get<CatBreed[]>(
+    `/breeds?${params.toString()}`,
+    {
+      signal,
+    }
+  );
+  return response.data;
 };
 
 export const getBreedById = async (id: string, signal?: AbortSignal) => {

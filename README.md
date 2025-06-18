@@ -12,7 +12,7 @@
 [![React Navite Reanimated](https://img.shields.io/badge/React_Navite_Reanimated-v3.18.0-001a72.svg?logo=react&logoColor=001a72)](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/getting-started/)
 [![Axios](https://img.shields.io/badge/Axios-v1.10.0-5a2ae4.svg?logo=Axios&logoColor=5a2ae4)](https://axios-http.com/es/docs/intro)
 [![Node](https://img.shields.io/badge/node-v22.15.0-fff?logo=nodedotjs)](https://bun.sh/)
-[![Bun](https://img.shields.io/badge/Bun-v1.2.12+-000?logo=bun&logoColor=fff)](https://bun.sh/)
+[![Bun](https://img.shields.io/badge/Bun-v1.2.12-000?logo=bun&logoColor=fff)](https://bun.sh/)
 [![npm](https://img.shields.io/badge/npm-v11.4.2-CB3837?logo=npm&logoColor=CB3837)](https://www.npmjs.com/)
 [![Yarn](https://img.shields.io/badge/Yarn-v1.22.22-2C8EBB?logo=yarn&logoColor=2C8EBB)](https://yarnpkg.com/)
 [![React Native Vector Icons](https://img.shields.io/badge/React_Native_vector_Icons-v12.0.0-1.svg)](https://github.com/oblador/react-native-vector-icons/tree/master)

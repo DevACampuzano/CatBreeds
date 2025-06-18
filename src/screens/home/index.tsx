@@ -1,4 +1,3 @@
-/* eslint-disable react-native/no-inline-styles */
 import {
   View,
   Image,
@@ -15,7 +14,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 //local imports
 import styles from "./styles";
 import gobalTheme from "../../styles/theme";
-import { useBreeds } from "../../common/hooks";
+import { useBreeds, useSearchBreeds } from "../../common/hooks";
 import { AppNavigationProp } from "../../routes";
 import SkeletonLoader from "../../components/CatCard/Loading";
 import { CatCard, InputSearch, ErrorMessage } from "../../components";
@@ -29,12 +28,22 @@ export const Home = () => {
     hasNextPage,
     isFetchingNextPage,
     isLoadingBreeds,
-    isLoadingFiltered,
-    listFiltered,
     listPages,
+  } = useBreeds();
+  const {
     searchQuery,
     handleChangeSearchText,
-  } = useBreeds();
+    listFiltered,
+    isLoadingFiltered,
+  } = useSearchBreeds();
+
+  const handlePressCard = (item: ItemCatCard, imageUrl?: string) => {
+    navigation.navigate("Details", {
+      id: item.id,
+      uri: imageUrl ?? "",
+      reference_image_id: item.reference_image_id,
+    });
+  };
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
@@ -50,7 +59,9 @@ export const Home = () => {
           <View
             style={[
               gobalTheme.header,
-              { paddingTop: Platform.OS === "ios" ? insets.top : 30 },
+              {
+                paddingTop: Platform.OS === "ios" ? insets.top : insets.top + 5,
+              },
             ]}
           >
             <View style={styles.logoContainer}>
@@ -66,14 +77,15 @@ export const Home = () => {
             searchQuery={searchQuery}
             setSearchQuery={handleChangeSearchText}
             placeholder="Search for cat breed..."
+            styles={styles.search}
           />
 
           {!searchQuery.trim() ? (
             <FlatList
-              data={listPages?.flatMap((page) => page.data) ?? []}
+              data={listPages ? listPages.flatMap((page) => page) : []}
               keyboardShouldPersistTaps="handled"
               renderItem={({ item, index }) => (
-                <CatCard item={item} navigation={navigation} index={index} />
+                <CatCard item={item} onPress={handlePressCard} index={index} />
               )}
               keyExtractor={(item) => item.id}
               contentContainerStyle={styles.listContainer}
@@ -102,13 +114,9 @@ export const Home = () => {
             />
           ) : (
             <FlatList
-              data={
-                Array.isArray(listFiltered)
-                  ? listFiltered
-                  : listFiltered?.data ?? []
-              }
+              data={listFiltered}
               renderItem={({ item, index }) => (
-                <CatCard item={item} navigation={navigation} index={index} />
+                <CatCard item={item} onPress={handlePressCard} index={index} />
               )}
               keyExtractor={(item) => item.id}
               contentContainerStyle={styles.listContainer}
