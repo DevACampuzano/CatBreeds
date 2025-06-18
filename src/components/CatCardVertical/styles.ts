@@ -54,22 +54,6 @@ export const stylesSkeleton = StyleSheet.create({
     overflow: "hidden",
     position: "relative",
   },
-  skeletonTextContainer: {
-    position: "relative",
-    overflow: "hidden",
-    borderRadius: 4,
-    backgroundColor: "#e1e1e1",
-    height: 16,
-    marginBottom: 5,
-  },
-  skeletonText: {
-    height: "100%",
-    backgroundColor: "#e1e1e1",
-  },
-  skeletonIcon: {
-    backgroundColor: "#e1e1e1",
-    borderRadius: 12,
-  },
   shimmerOverlay: {
     position: "absolute",
     top: 0,

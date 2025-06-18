@@ -4,16 +4,15 @@ import {
   Platform,
   Image,
   ScrollView,
-  StyleSheet,
   Text,
   View,
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
   Keyboard,
 } from "react-native";
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import Animated from "react-native-reanimated";
-
+import { useQuery } from "@tanstack/react-query";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 //local imports
 import gobalTheme from "../../styles/theme";
 import { AppStackParamList } from "../../routes";
@@ -25,12 +24,12 @@ import {
   InputSearch,
   Section,
 } from "../../components";
-import { useBreed, useSearchBreeds } from "../../common/hooks";
-import placeholderUrl from "../../common/assets/img/logo_catbreeeds.png";
-import SkeletonLoader from "../../components/CatCard/Loading";
+import styles from "./styles";
 import { useEffect, useState } from "react";
 import { BreedsActions } from "../../service";
-import { useQuery } from "@tanstack/react-query";
+import { useBreed, useSearchBreeds } from "../../common/hooks";
+import placeholderUrl from "../../common/assets/img/logo_catbreeeds.png";
+import SkeletonLoaderVertical from "../../components/CatCardVertical/Loading";
 
 type Props = NativeStackScreenProps<AppStackParamList, "Compare">;
 export const Compare = ({ route, navigation }: Props) => {
@@ -206,7 +205,7 @@ export const Compare = ({ route, navigation }: Props) => {
                       style={{ marginBottom: 20 }}
                     />
 
-                    {isLoadingFiltered && <SkeletonLoader />}
+                    {isLoadingFiltered && <SkeletonLoaderVertical />}
                     {!isLoadingFiltered && !listFiltered && (
                       <ErrorMessage text="No results found" />
                     )}
@@ -299,54 +298,3 @@ export const Compare = ({ route, navigation }: Props) => {
     </KeyboardAvoidingView>
   );
 };
-
-const styles = StyleSheet.create({
-  imageContainer: {
-    alignItems: "stretch",
-    height: 250,
-    marginBottom: 15,
-    position: "relative",
-    backgroundColor: gobalTheme.container.backgroundColor,
-    justifyContent: "space-between",
-    flexDirection: "row",
-  },
-  catImage: {
-    width: "50%",
-    height: "100%",
-    backgroundColor: gobalTheme.primary.color,
-  },
-  basicInfo: {
-    alignItems: "center",
-    marginBottom: 20,
-  },
-  catName: {
-    fontSize: 28,
-    fontWeight: "bold",
-    color: "#5e3b89",
-    fontFamily: "Roboto-Bold",
-    marginBottom: 10,
-  },
-  vs: {
-    position: "absolute",
-    left: "50%",
-    top: "50%",
-    transform: [{ translateX: -18 }, { translateY: -18 }],
-    color: gobalTheme.primary.color,
-    backgroundColor: "rgba(255, 255, 255, 0.8)",
-    borderRadius: 50,
-    padding: 5,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: Platform.OS === "ios" ? 2 : 4,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-    fontSize: 24,
-    fontWeight: "bold",
-    zIndex: 1,
-    textAlign: "center",
-    overflow: "hidden",
-  },
-});

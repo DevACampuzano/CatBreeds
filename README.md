@@ -239,8 +239,8 @@ La app usa los endpoints de [TheCatAPI](https://developers.thecatapi.com/)
 
 ## 🛠️ Roadmap y Mejoras Futuras
 
-- Implementar favoritos localmente
-- Añadir comparador de razas
+- ~~Implementar favoritos localmente~~
+- ~~Añadir comparador de razas~~
 - Internacionalización / Multilenguaje (i18n)
 - Modo oscuro
 
