@@ -11,13 +11,11 @@ import { useNavigation } from "@react-navigation/native";
 import Animated, { FadeInDown } from "react-native-reanimated";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 //local imports
-import styles from "./styles";
-import gobalTheme from "../../styles/theme";
+import useStyles from "./styles";
 import { Section } from "../../components/Section/index";
 import { Characteristic, ErrorMessage, Header } from "../../components";
-import { AppNavigationProp, AppStackParamList } from "../../routes";
 import placeholderUrl from "../../common/assets/img/logo_catbreeeds.png";
-import { useFavoriteStore } from "../../common/store";
+import { useFavoriteStore, useThemeStore } from "../../common/store";
 import { useEffect, useState } from "react";
 import { useBreed } from "../../common/hooks";
 
@@ -27,7 +25,8 @@ export const Details = ({ route }: Props) => {
   const { id, uri, reference_image_id } = route.params;
   const navigation = useNavigation<AppNavigationProp>();
   const [isFavorite, setIsFavorite] = useState(false);
-
+  const { colors, isDarkMode } = useThemeStore();
+  const styles = useStyles(isDarkMode, colors);
   const { data, isLoading } = useBreed(id);
   const favorite = useFavoriteStore((state) => state.favorites);
   const handleAddFavorite = useFavoriteStore((state) => state.addFavorite);
@@ -53,11 +52,11 @@ export const Details = ({ route }: Props) => {
     return (
       <View
         style={[
-          gobalTheme.container,
+          styles.container,
           { justifyContent: "center", alignItems: "center" },
         ]}
       >
-        <ActivityIndicator size="large" color={gobalTheme.primary.color} />
+        <ActivityIndicator size="large" color={colors.primary} />
       </View>
     );
   }
@@ -67,7 +66,7 @@ export const Details = ({ route }: Props) => {
   }
 
   return (
-    <View style={gobalTheme.container}>
+    <View style={styles.container}>
       <Header title={data.name} onBackPress={() => navigation.goBack()} />
       <View style={styles.imageContainer}>
         <TouchableOpacity
@@ -78,7 +77,7 @@ export const Details = ({ route }: Props) => {
           <Icons
             name={isFavorite ? "heart" : "heart-outline"}
             size={25}
-            color={gobalTheme.accent.color}
+            color={colors.accent}
           />
         </TouchableOpacity>
         <Animated.Image
@@ -94,13 +93,10 @@ export const Details = ({ route }: Props) => {
             navigation.navigate("Compare", { id, uri, reference_image_id })
           }
         >
-          <Icons name="add-outline" size={25} color={gobalTheme.accent.color} />
+          <Icons name="add-outline" size={25} color={colors.accent} />
         </TouchableOpacity>
       </View>
-      <ScrollView
-        style={gobalTheme.container}
-        showsVerticalScrollIndicator={false}
-      >
+      <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
         <View
           style={{
             padding: 20,
@@ -117,11 +113,7 @@ export const Details = ({ route }: Props) => {
                 alignItems: "center",
               }}
             >
-              <Icons
-                name="location"
-                size={20}
-                color={gobalTheme.accent.color}
-              />
+              <Icons name="location" size={20} color={colors.accent} />
               <Text style={styles.origin}>{data.origin}</Text>
             </View>
           </Animated.View>

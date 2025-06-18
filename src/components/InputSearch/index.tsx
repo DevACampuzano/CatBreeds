@@ -1,8 +1,8 @@
 /* eslint-disable react-native/no-inline-styles */
 import { View, TextInput, TouchableOpacity } from "react-native";
 import Icons from "@react-native-vector-icons/ionicons";
-import gobalTheme from "../../styles/theme";
-import styles from "./styles";
+import useStyles from "./styles";
+import { useThemeStore } from "../../common/store";
 
 export const InputSearch = ({
   searchQuery,
@@ -10,13 +10,16 @@ export const InputSearch = ({
   placeholder,
   style,
 }: InputSearchProps) => {
+  const { colors } = useThemeStore();
+  const styles = useStyles(colors);
+
   return (
     <View style={[styles.searchContainer, style]}>
-      <Icons name="search" size={20} color={gobalTheme.secondaryText.color} />
+      <Icons name="search" size={20} color={colors.textSecondary} />
       <TextInput
         style={styles.searchInput}
         placeholder={placeholder}
-        placeholderTextColor={gobalTheme.secondaryText.color}
+        placeholderTextColor={colors.textSecondary}
         value={searchQuery}
         onChangeText={setSearchQuery}
       />
@@ -24,7 +27,7 @@ export const InputSearch = ({
         <Icons
           name="close-sharp"
           size={20}
-          color={gobalTheme.secondaryText.color}
+          color={colors.textSecondary}
           style={{ opacity: searchQuery ? 1 : 0 }}
         />
       </TouchableOpacity>

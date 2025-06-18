@@ -2,15 +2,18 @@ import { useQuery } from "@tanstack/react-query";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import Icons from "@react-native-vector-icons/ionicons";
 // local imports
-import styles from "./styles";
-import gobalTheme from "../../styles/theme";
+import useStyles from "./styles";
+
 import logo_catbreeeds from "../../common/assets/img/logo_catbreeeds.png";
 import { BreedsActions } from "../../service";
+import { useThemeStore } from "../../common/store";
 
 export const CatCardVertical = ({
   item,
   onPress,
 }: Omit<CatCardProps, "index">) => {
+  const { colors, isDarkMode } = useThemeStore();
+  const styles = useStyles(isDarkMode, colors);
   const { data: image, isLoading } = useQuery({
     queryKey: ["breeds-image", item.reference_image_id],
     queryFn: ({ signal }) =>
@@ -37,7 +40,7 @@ export const CatCardVertical = ({
           <Icons
             name="location-outline"
             size={16}
-            color={gobalTheme.secondaryText.color}
+            color={colors.textSecondary}
           />
           <Text style={styles.origin}>{item.origin}</Text>
         </View>

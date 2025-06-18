@@ -1,6 +1,5 @@
 import {
   View,
-  Image,
   ActivityIndicator,
   FlatList,
   KeyboardAvoidingView,
@@ -10,19 +9,16 @@ import {
   StatusBar,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 //local imports
-import styles from "./styles";
-import gobalTheme from "../../styles/theme";
+import useStyles from "./styles";
 import { useBreeds, useSearchBreeds } from "../../common/hooks";
-import { AppNavigationProp } from "../../routes";
 import SkeletonLoader from "../../components/CatCard/Loading";
-import { CatCard, InputSearch, ErrorMessage } from "../../components";
-import logo_catbreeeds from "../../common/assets/img/logo_catbreeeds_1.png";
-
+import { CatCard, InputSearch, ErrorMessage, Header } from "../../components";
+import { useThemeStore } from "../../common/store";
 export const Home = () => {
   const navigation = useNavigation<AppNavigationProp>();
-  const insets = useSafeAreaInsets();
+  const { isDarkMode, colors } = useThemeStore();
+  const styles = useStyles(isDarkMode, colors);
   const {
     fetchNextPage,
     hasNextPage,
@@ -48,30 +44,15 @@ export const Home = () => {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <KeyboardAvoidingView
-        style={[gobalTheme.container]}
+        style={[styles.container]}
         behavior={Platform.OS === "ios" ? "padding" : undefined}
       >
-        <View style={gobalTheme.container}>
+        <View style={styles.container}>
           <StatusBar
             barStyle="light-content"
-            backgroundColor={gobalTheme.primary.color}
+            backgroundColor={colors.primary}
           />
-          <View
-            style={[
-              gobalTheme.header,
-              {
-                paddingTop: Platform.OS === "ios" ? insets.top : insets.top + 5,
-              },
-            ]}
-          >
-            <View style={styles.logoContainer}>
-              <Image
-                source={logo_catbreeeds}
-                style={styles.logo}
-                resizeMode="contain"
-              />
-            </View>
-          </View>
+          <Header logo style={styles.header} />
 
           <InputSearch
             searchQuery={searchQuery}
@@ -79,7 +60,6 @@ export const Home = () => {
             placeholder="Search for cat breed..."
             style={styles.search}
           />
-
           {!searchQuery.trim() ? (
             <FlatList
               data={listPages ? listPages.flatMap((page) => page) : []}
@@ -98,10 +78,7 @@ export const Home = () => {
               onEndReachedThreshold={0.2}
               ListFooterComponent={
                 isFetchingNextPage ? (
-                  <ActivityIndicator
-                    size="large"
-                    color={gobalTheme.primary.color}
-                  />
+                  <ActivityIndicator size="large" color={colors.primary} />
                 ) : null
               }
               ListEmptyComponent={

@@ -14,8 +14,6 @@ import Animated from "react-native-reanimated";
 import { useQuery } from "@tanstack/react-query";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 //local imports
-import gobalTheme from "../../styles/theme";
-import { AppStackParamList } from "../../routes";
 import {
   CatCardVertical,
   Characteristic,
@@ -24,12 +22,15 @@ import {
   InputSearch,
   Section,
 } from "../../components";
-import styles from "./styles";
+import useStyles from "./styles";
 import { useEffect, useState } from "react";
 import { BreedsActions } from "../../service";
 import { useBreed, useSearchBreeds } from "../../common/hooks";
 import placeholderUrl from "../../common/assets/img/logo_catbreeeds.png";
 import SkeletonLoaderVertical from "../../components/CatCardVertical/Loading";
+import { useThemeStore } from "../../common/store";
+import { TouchableOpacity } from "react-native";
+import Icon from "@react-native-vector-icons/ionicons";
 
 type Props = NativeStackScreenProps<AppStackParamList, "Compare">;
 export const Compare = ({ route, navigation }: Props) => {
@@ -42,6 +43,8 @@ export const Compare = ({ route, navigation }: Props) => {
     isLoadingFiltered,
     listFiltered,
   } = useSearchBreeds();
+  const { colors } = useThemeStore();
+  const styles = useStyles(colors);
 
   const { data: image, refetch } = useQuery({
     queryKey: ["breeds-image", secondCat?.reference_image_id],
@@ -54,6 +57,7 @@ export const Compare = ({ route, navigation }: Props) => {
   useEffect(() => {
     if (secondCat) {
       refetch();
+      Keyboard.dismiss();
     }
   }, [secondCat, refetch]);
 
@@ -61,11 +65,11 @@ export const Compare = ({ route, navigation }: Props) => {
     return (
       <View
         style={[
-          gobalTheme.container,
+          styles.container,
           { justifyContent: "center", alignItems: "center" },
         ]}
       >
-        <ActivityIndicator size="large" color={gobalTheme.primary.color} />
+        <ActivityIndicator size="large" color={colors.primary} />
       </View>
     );
   }
@@ -76,10 +80,10 @@ export const Compare = ({ route, navigation }: Props) => {
 
   return (
     <KeyboardAvoidingView
-      style={[gobalTheme.container]}
+      style={[styles.container]}
       behavior={Platform.OS === "ios" ? "padding" : undefined}
     >
-      <View style={gobalTheme.container}>
+      <View style={styles.container}>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
           <View>
             <Header
@@ -93,7 +97,7 @@ export const Compare = ({ route, navigation }: Props) => {
                 source={uri ? { uri: uri } : placeholderUrl}
                 style={[styles.catImage, { borderBottomLeftRadius: 20 }]}
                 sharedTransitionTag={reference_image_id}
-                resizeMode="stretch"
+                resizeMode="cover"
               />
               <Text style={styles.vs}>VS</Text>
               <Image
@@ -104,14 +108,22 @@ export const Compare = ({ route, navigation }: Props) => {
                     borderBottomRightRadius: 20,
                   },
                 ]}
-                resizeMethod="none"
-                resizeMode="stretch"
+                resizeMode="cover"
               />
+              <TouchableOpacity
+                style={styles.btnClear}
+                onPress={() => {
+                  setSecondCat(null);
+                  handleChangeSearchText("");
+                }}
+              >
+                <Icon name="close" size={24} color={colors.accent} />
+              </TouchableOpacity>
             </View>
           </View>
         </TouchableWithoutFeedback>
         <ScrollView
-          style={[gobalTheme.container]}
+          style={[styles.container]}
           showsVerticalScrollIndicator={false}
         >
           <TouchableWithoutFeedback
@@ -128,7 +140,11 @@ export const Compare = ({ route, navigation }: Props) => {
               }}
             >
               <View style={{ width: "50%" }}>
-                <Section title="Characteristics" index={4}>
+                <Section
+                  title="Characteristics"
+                  index={4}
+                  animateDuration={100}
+                >
                   <View style={{ gap: 15 }}>
                     <Characteristic
                       label="Adaptability"
@@ -223,7 +239,11 @@ export const Compare = ({ route, navigation }: Props) => {
                   </>
                 ) : (
                   <>
-                    <Section title="Characteristics" index={4}>
+                    <Section
+                      title="Characteristics"
+                      index={4}
+                      animateDuration={100}
+                    >
                       <View style={{ gap: 15 }}>
                         <Characteristic
                           label="Adaptability"

@@ -1,8 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import { Text, TouchableOpacity, View } from "react-native";
 import Icons from "@react-native-vector-icons/ionicons";
-import styles from "./styles";
-import gobalTheme from "../../styles/theme";
+import useStyles from "./styles";
 import { Stars } from "../Stars";
 import logo_catbreeeds from "../../common/assets/img/logo_catbreeeds.png";
 import Animated, {
@@ -18,8 +17,11 @@ import {
   GestureDetector,
   GestureHandlerRootView,
 } from "react-native-gesture-handler";
+import { useThemeStore } from "../../common/store";
 
 export const CatCard = ({ item, onPress, index }: CatCardProps) => {
+  const { colors, isDarkMode } = useThemeStore();
+  const styles = useStyles(isDarkMode, colors);
   const { data: image, isLoading } = useQuery({
     queryKey: ["breeds-image", item.reference_image_id],
     queryFn: ({ signal }) =>
@@ -67,7 +69,7 @@ export const CatCard = ({ item, onPress, index }: CatCardProps) => {
             <Icons
               name="location-outline"
               size={16}
-              color={gobalTheme.secondaryText.color}
+              color={colors.textSecondary}
             />
             <Text style={styles.origin}>{item.origin}</Text>
           </View>
@@ -78,11 +80,7 @@ export const CatCard = ({ item, onPress, index }: CatCardProps) => {
             </View>
           </View>
         </View>
-        <Icons
-          name="chevron-forward"
-          size={24}
-          color={gobalTheme.accent.color}
-        />
+        <Icons name="chevron-forward" size={24} color={colors.accent} />
       </TouchableOpacity>
     </Animated.View>
   );

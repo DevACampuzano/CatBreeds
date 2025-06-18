@@ -1,9 +1,12 @@
 import { useEffect, useRef } from "react";
 import { View, Animated, Easing } from "react-native";
-import styles, { stylesSkeleton } from "./styles";
+import useStyles, { useStylesSkeleton } from "./styles";
+import { useThemeStore } from "../../common/store";
 const SkeletonLoaderVertical = () => {
   const shimmerAnim = useRef(new Animated.Value(0)).current;
-
+  const { colors, isDarkMode } = useThemeStore();
+  const styles = useStyles(isDarkMode, colors);
+  const stylesSkeleton = useStylesSkeleton(isDarkMode);
   useEffect(() => {
     const animate = () => {
       shimmerAnim.setValue(0);

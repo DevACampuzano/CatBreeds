@@ -1,41 +1,31 @@
 import "react-native-gesture-handler";
 import { Image, Platform } from "react-native";
-import { StatusBar, View, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import React from "react";
 //local imports
 import { AppRouter } from "./routes";
-import gobalTheme from "./styles/theme";
 import { ErrorMessage } from "./components";
 import { TansStackProvider } from "./common/store/TansStack";
 import useConnection, { AppStateType } from "./common/hooks/useConnection";
 import { useFavoriteStore } from "./common/store";
+import { useSyncSystemTheme, useThemeStore } from "./common/store/ThemeStorage";
 
-const AppState = () => (
-  <NavigationContainer>
-    <TansStackProvider>
-      <AppRouter />
-    </TansStackProvider>
-  </NavigationContainer>
-);
-
-const ConnectedApp = () => (
-  <View style={[gobalTheme.container, styles.centered]}>
-    <StatusBar
-      barStyle="light-content"
-      backgroundColor={gobalTheme.primary.color}
-    />
-    <ErrorMessage
-      text="No Internet Connection"
-      subtitle="Please check your internet connection."
-    />
-  </View>
-);
+const AppState = () => {
+  useSyncSystemTheme();
+  return (
+    <NavigationContainer>
+      <TansStackProvider>
+        <AppRouter />
+      </TansStackProvider>
+    </NavigationContainer>
+  );
+};
 
 const App = () => {
   const appState = useConnection();
-
   useFavoriteStore.persist.rehydrate();
+  useThemeStore.persist.rehydrate();
 
   switch (appState) {
     case AppStateType.CONNECTED:
@@ -46,17 +36,19 @@ const App = () => {
           ? require("./common/assets/img/splash.gif")
           : require("./common/assets/img/logo_catbreeeds.png");
       return (
-        <View style={[gobalTheme.container, styles.centered]}>
-          <StatusBar
-            barStyle="light-content"
-            backgroundColor={styles.centered.backgroundColor}
-          />
-
+        <View style={styles.centered}>
           <Image source={splash} style={styles.video} resizeMode="contain" />
         </View>
       );
     case AppStateType.DISCONNECTED:
-      return <ConnectedApp />;
+      return (
+        <View style={styles.centered}>
+          <ErrorMessage
+            text="No Internet Connection"
+            subtitle="Please check your internet connection."
+          />
+        </View>
+      );
   }
 };
 
@@ -67,6 +59,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#5C348A",
+    flex: 1,
   },
   video: {
     width: 350,
