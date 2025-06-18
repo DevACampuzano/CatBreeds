@@ -241,7 +241,7 @@ La app usa los endpoints de [TheCatAPI](https://developers.thecatapi.com/)
 
 - ~~Implementar favoritos localmente~~
 - ~~Añadir comparador de razas~~
-- Internacionalización / Multilenguaje (i18n)
+- ~~Internacionalización / Multilenguaje (i18n)~~
 - ~~Modo oscuro~~
 
 ---
