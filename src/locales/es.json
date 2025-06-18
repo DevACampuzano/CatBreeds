@@ -1,0 +1,53 @@
+{
+  "search-breed": "Buscar raza de gato...",
+  "cat-card": {
+    "intelligence": "Inteligencia"
+  },
+  "details": {
+    "description": "Descripción",
+    "temper": "Temperamento",
+    "general-info": "Información General",
+    "life-expectancy": "Esperanza de Vida",
+    "metric": "peso",
+    "Hypoallergenic": "Hipoalergénico",
+    "characteristics": "Características",
+    "yes": "Sí",
+    "no": "No",
+    "characteristics-details": {
+      "adaptability": "Adaptabilidad",
+      "affection-level": "Nivel de Afecto",
+      "child-friendly": "Amigable con los Niños",
+      "dog-friendly": "Amigable con los Perros",
+      "energy-level": "Nivel de Energía",
+      "grooming": "Aseo",
+      "health-issues": "Problemas de Salud",
+      "intelligence": "Inteligencia",
+      "shedding-level": "Nivel de Mudanza",
+      "social-needs": "Necesidades Sociales",
+      "stranger-friendly": "Amigable con los Extraños",
+      "vocalisation": "Vocalización"
+    }
+  },
+  "compare": {
+    "characteristics": "Características",
+    "characteristics-details": {
+      "adaptability": "Adaptabilidad",
+      "affection-level": "Nivel de Afecto",
+      "child-friendly": "Amigable con los Niños",
+      "dog-friendly": "Amigable con los Perros",
+      "energy-level": "Nivel de Energía",
+      "grooming": "Aseo",
+      "health-issues": "Problemas de Salud",
+      "intelligence": "Inteligencia",
+      "shedding-level": "Nivel de Mudanza",
+      "social-needs": "Necesidades Sociales",
+      "stranger-friendly": "Amigable con los Extraños",
+      "vocalisation": "Vocalización"
+    }
+  },
+  "error": {
+    "not-found": "No se encuentro resultado",
+    "not-connected": "No estás conectado a Internet",
+    "place-check": "Por favor, verifica tu conexión a Internet y vuelve a intentarlo"
+  }
+}

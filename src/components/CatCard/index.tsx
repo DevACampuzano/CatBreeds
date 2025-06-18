@@ -18,10 +18,12 @@ import {
   GestureHandlerRootView,
 } from "react-native-gesture-handler";
 import { useThemeStore } from "../../common/store";
+import { useTranslation } from "../../common/hooks/useI18n";
 
 export const CatCard = ({ item, onPress, index }: CatCardProps) => {
   const { colors, isDarkMode } = useThemeStore();
   const styles = useStyles(isDarkMode, colors);
+  const { t } = useTranslation();
   const { data: image, isLoading } = useQuery({
     queryKey: ["breeds-image", item.reference_image_id],
     queryFn: ({ signal }) =>
@@ -74,7 +76,9 @@ export const CatCard = ({ item, onPress, index }: CatCardProps) => {
             <Text style={styles.origin}>{item.origin}</Text>
           </View>
           <View style={styles.intelligenceRow}>
-            <Text style={styles.intelligenceLabel}>Intelligence:</Text>
+            <Text style={styles.intelligenceLabel}>
+              {t("cat-card.intelligence")}:
+            </Text>
             <View style={styles.starsContainer}>
               <Stars rating={item.intelligence} />
             </View>

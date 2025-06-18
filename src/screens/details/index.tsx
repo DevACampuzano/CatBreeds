@@ -18,6 +18,7 @@ import placeholderUrl from "../../common/assets/img/logo_catbreeeds.png";
 import { useFavoriteStore, useThemeStore } from "../../common/store";
 import { useEffect, useState } from "react";
 import { useBreed } from "../../common/hooks";
+import { useTranslation } from "react-i18next";
 
 type Props = NativeStackScreenProps<AppStackParamList, "Details">;
 
@@ -28,6 +29,7 @@ export const Details = ({ route }: Props) => {
   const { colors, isDarkMode } = useThemeStore();
   const styles = useStyles(isDarkMode, colors);
   const { data, isLoading } = useBreed(id);
+  const { t } = useTranslation();
   const favorite = useFavoriteStore((state) => state.favorites);
   const handleAddFavorite = useFavoriteStore((state) => state.addFavorite);
   const handleRemoveFavorite = useFavoriteStore(
@@ -62,7 +64,7 @@ export const Details = ({ route }: Props) => {
   }
 
   if (!data) {
-    return <ErrorMessage text="No results found" />;
+    return <ErrorMessage text={t("error.not-found")} />;
   }
 
   return (
@@ -118,10 +120,10 @@ export const Details = ({ route }: Props) => {
             </View>
           </Animated.View>
 
-          <Section title="Description" index={1}>
+          <Section title={t("details.description")} index={1}>
             <Text style={styles.description}>{data.description}</Text>
           </Section>
-          <Section title="Temper" index={2}>
+          <Section title={t("details.temper")} index={2}>
             <View style={styles.temperamentContainer}>
               {data.temperament.split(", ").map((trait, index) => (
                 <View key={index} style={styles.temperamentTag}>
@@ -130,54 +132,79 @@ export const Details = ({ route }: Props) => {
               ))}
             </View>
           </Section>
-          <Section title="General Information" index={3}>
+          <Section title={t("details.general-info")} index={3}>
             <View style={{ gap: 12 }}>
               <View style={styles.infoItem}>
-                <Text style={styles.infoLabel}>Life expectancy</Text>
+                <Text style={styles.infoLabel}>
+                  {t("details.life-expectancy")}
+                </Text>
                 <Text style={styles.infoValue}>{data.life_span} years</Text>
               </View>
               <View style={styles.infoItem}>
-                <Text style={styles.infoLabel}>Metric</Text>
+                <Text style={styles.infoLabel}>{t("details.metric")}</Text>
                 <Text style={styles.infoValue}>{data.weight.metric} kg</Text>
               </View>
               <View style={styles.infoItem}>
-                <Text style={styles.infoLabel}>Hypoallergenic</Text>
+                <Text style={styles.infoLabel}>
+                  {t("details.Hypoallergenic")}
+                </Text>
                 <Text style={styles.infoValue}>
-                  {data.hypoallergenic ? "Yes" : "No"}
+                  {data.hypoallergenic ? t("yes") : t("no")}
                 </Text>
               </View>
             </View>
           </Section>
 
-          <Section title="Characteristics" index={4}>
+          <Section title={t("details.characteristics")} index={4}>
             <View style={{ gap: 15 }}>
-              <Characteristic label="Adaptability" value={data.adaptability} />
               <Characteristic
-                label="Affection Level"
+                label={t("details.characteristics-details.adaptability")}
+                value={data.adaptability}
+              />
+              <Characteristic
+                label={t("details.characteristics-details.affection-level")}
                 value={data.affection_level}
               />
               <Characteristic
-                label="Child Friendly"
+                label={t("details.characteristics-details.child-friendly")}
                 value={data.child_friendly}
               />
-              <Characteristic label="Dog Friendly" value={data.dog_friendly} />
-              <Characteristic label="Energy Level" value={data.energy_level} />
-              <Characteristic label="Grooming" value={data?.grooming} />
               <Characteristic
-                label="Health Issues"
+                label={t("details.characteristics-details.dog-friendly")}
+                value={data.dog_friendly}
+              />
+              <Characteristic
+                label={t("details.characteristics-details.energy-level")}
+                value={data.energy_level}
+              />
+              <Characteristic
+                label={t("details.characteristics-details.grooming")}
+                value={data?.grooming}
+              />
+              <Characteristic
+                label={t("details.characteristics-details.health-issues")}
                 value={data.health_issues}
               />
-              <Characteristic label="Intelligence" value={data.intelligence} />
               <Characteristic
-                label="Shedding Level"
+                label={t("details.characteristics-details.intelligence")}
+                value={data.intelligence}
+              />
+              <Characteristic
+                label={t("details.characteristics-details.shedding-level")}
                 value={data.shedding_level}
               />
-              <Characteristic label="Social Needs" value={data.social_needs} />
               <Characteristic
-                label="Stranger Friendly"
+                label={t("details.characteristics-details.social-needs")}
+                value={data.social_needs}
+              />
+              <Characteristic
+                label={t("details.characteristics-details.stranger-friendly")}
                 value={data.stranger_friendly}
               />
-              <Characteristic label="Vocalisation" value={data.vocalisation} />
+              <Characteristic
+                label={t("details.characteristics-details.vocalisation")}
+                value={data.vocalisation}
+              />
             </View>
           </Section>
         </View>

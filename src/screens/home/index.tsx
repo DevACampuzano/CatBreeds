@@ -11,10 +11,12 @@ import {
 import { useNavigation } from "@react-navigation/native";
 //local imports
 import useStyles from "./styles";
-import { useBreeds, useSearchBreeds } from "../../common/hooks";
-import SkeletonLoader from "../../components/CatCard/Loading";
-import { CatCard, InputSearch, ErrorMessage, Header } from "../../components";
 import { useThemeStore } from "../../common/store";
+import { useTranslation } from "../../common/hooks/useI18n";
+import SkeletonLoader from "../../components/CatCard/Loading";
+import { useBreeds, useSearchBreeds } from "../../common/hooks";
+import { CatCard, InputSearch, ErrorMessage, Header } from "../../components";
+
 export const Home = () => {
   const navigation = useNavigation<AppNavigationProp>();
   const { isDarkMode, colors } = useThemeStore();
@@ -32,7 +34,7 @@ export const Home = () => {
     listFiltered,
     isLoadingFiltered,
   } = useSearchBreeds();
-
+  const { t } = useTranslation();
   const handlePressCard = (item: ItemCatCard, imageUrl?: string) => {
     navigation.navigate("Details", {
       id: item.id,
@@ -57,7 +59,7 @@ export const Home = () => {
           <InputSearch
             searchQuery={searchQuery}
             setSearchQuery={handleChangeSearchText}
-            placeholder="Search for cat breed..."
+            placeholder={t("search-breed")}
             style={styles.search}
           />
           {!searchQuery.trim() ? (
@@ -85,7 +87,7 @@ export const Home = () => {
                 isLoadingBreeds ? (
                   <SkeletonLoader />
                 ) : (
-                  <ErrorMessage text="No results found" />
+                  <ErrorMessage text={t("error.not-found")} />
                 )
               }
             />
@@ -100,7 +102,7 @@ export const Home = () => {
               showsVerticalScrollIndicator={false}
               ListEmptyComponent={
                 !isLoadingFiltered ? (
-                  <ErrorMessage text="No results found" />
+                  <ErrorMessage text={t("error.not-found")} />
                 ) : undefined
               }
               ListFooterComponent={

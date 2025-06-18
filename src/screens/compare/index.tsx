@@ -31,6 +31,7 @@ import SkeletonLoaderVertical from "../../components/CatCardVertical/Loading";
 import { useThemeStore } from "../../common/store";
 import { TouchableOpacity } from "react-native";
 import Icon from "@react-native-vector-icons/ionicons";
+import { useTranslation } from "react-i18next";
 
 type Props = NativeStackScreenProps<AppStackParamList, "Compare">;
 export const Compare = ({ route, navigation }: Props) => {
@@ -45,6 +46,7 @@ export const Compare = ({ route, navigation }: Props) => {
   } = useSearchBreeds();
   const { colors } = useThemeStore();
   const styles = useStyles(colors);
+  const { t } = useTranslation();
 
   const { data: image, refetch } = useQuery({
     queryKey: ["breeds-image", secondCat?.reference_image_id],
@@ -75,7 +77,7 @@ export const Compare = ({ route, navigation }: Props) => {
   }
 
   if (!data) {
-    return <ErrorMessage text="No results found" />;
+    return <ErrorMessage text={t("error.not-found")} />;
   }
 
   return (
@@ -94,9 +96,10 @@ export const Compare = ({ route, navigation }: Props) => {
             />
             <View style={styles.imageContainer}>
               <Animated.Image
-                source={uri ? { uri: uri } : placeholderUrl}
+                source={{ uri: uri }}
                 style={[styles.catImage, { borderBottomLeftRadius: 20 }]}
                 sharedTransitionTag={reference_image_id}
+                defaultSource={placeholderUrl}
                 resizeMode="cover"
               />
               <Text style={styles.vs}>VS</Text>
@@ -141,68 +144,76 @@ export const Compare = ({ route, navigation }: Props) => {
             >
               <View style={{ width: "50%" }}>
                 <Section
-                  title="Characteristics"
+                  title={t("compare.characteristics")}
                   index={4}
                   animateDuration={100}
                 >
                   <View style={{ gap: 15 }}>
                     <Characteristic
-                      label="Adaptability"
+                      label={t("compare.characteristics-details.adaptability")}
                       value={data.adaptability}
                       style={{ flexDirection: "column", gap: 5 }}
                     />
                     <Characteristic
-                      label="Affection Level"
+                      label={t(
+                        "compare.characteristics-details.affection-level"
+                      )}
                       value={data.affection_level}
                       style={{ flexDirection: "column", gap: 5 }}
                     />
                     <Characteristic
-                      label="Child Friendly"
+                      label={t(
+                        "compare.characteristics-details.child-friendly"
+                      )}
                       value={data.child_friendly}
                       style={{ flexDirection: "column", gap: 5 }}
                     />
                     <Characteristic
-                      label="Dog Friendly"
+                      label={t("compare.characteristics-details.dog-friendly")}
                       value={data.dog_friendly}
                       style={{ flexDirection: "column", gap: 5 }}
                     />
                     <Characteristic
-                      label="Energy Level"
+                      label={t("compare.characteristics-details.energy-level")}
                       value={data.energy_level}
                       style={{ flexDirection: "column", gap: 5 }}
                     />
                     <Characteristic
-                      label="Grooming"
+                      label={t("compare.characteristics-details.grooming")}
                       value={data?.grooming}
                       style={{ flexDirection: "column", gap: 5 }}
                     />
                     <Characteristic
-                      label="Health Issues"
+                      label={t("compare.characteristics-details.health-issues")}
                       value={data.health_issues}
                       style={{ flexDirection: "column", gap: 5 }}
                     />
                     <Characteristic
-                      label="Intelligence"
+                      label={t("compare.characteristics-details.intelligence")}
                       value={data.intelligence}
                       style={{ flexDirection: "column", gap: 5 }}
                     />
                     <Characteristic
-                      label="Shedding Level"
+                      label={t(
+                        "compare.characteristics-details.shedding-level"
+                      )}
                       value={data.shedding_level}
                       style={{ flexDirection: "column", gap: 5 }}
                     />
                     <Characteristic
-                      label="Social Needs"
+                      label={t("compare.characteristics-details.social-needs")}
                       value={data.social_needs}
                       style={{ flexDirection: "column", gap: 5 }}
                     />
                     <Characteristic
-                      label="Stranger Friendly"
+                      label={t(
+                        "compare.characteristics-details.stranger-friendly"
+                      )}
                       value={data.stranger_friendly}
                       style={{ flexDirection: "column", gap: 5 }}
                     />
                     <Characteristic
-                      label="Vocalisation"
+                      label={t("compare.characteristics-details.vocalisation")}
                       value={data.vocalisation}
                       style={{ flexDirection: "column", gap: 5 }}
                     />
@@ -217,13 +228,13 @@ export const Compare = ({ route, navigation }: Props) => {
                     <InputSearch
                       searchQuery={searchQuery}
                       setSearchQuery={handleChangeSearchText}
-                      placeholder="Search for cat breed..."
+                      placeholder={t("search-breed")}
                       style={{ marginBottom: 20 }}
                     />
 
                     {isLoadingFiltered && <SkeletonLoaderVertical />}
                     {!isLoadingFiltered && !listFiltered && (
-                      <ErrorMessage text="No results found" />
+                      <ErrorMessage text={t("error.not-found")} />
                     )}
                     {listFiltered &&
                       listFiltered.length > 0 &&
@@ -240,69 +251,91 @@ export const Compare = ({ route, navigation }: Props) => {
                 ) : (
                   <>
                     <Section
-                      title="Characteristics"
+                      title={t("compare.characteristics")}
                       index={4}
                       animateDuration={100}
                     >
                       <View style={{ gap: 15 }}>
                         <Characteristic
-                          label="Adaptability"
+                          label={t(
+                            "compare.characteristics-details.adaptability"
+                          )}
                           value={secondCat.adaptability}
                           style={{ flexDirection: "column", gap: 5 }}
                         />
                         <Characteristic
-                          label="Affection Level"
+                          label={t(
+                            "compare.characteristics-details.affection-level"
+                          )}
                           value={secondCat.affection_level}
                           style={{ flexDirection: "column", gap: 5 }}
                         />
                         <Characteristic
-                          label="Child Friendly"
+                          label={t(
+                            "compare.characteristics-details.child-friendly"
+                          )}
                           value={secondCat.child_friendly}
                           style={{ flexDirection: "column", gap: 5 }}
                         />
 
                         <Characteristic
-                          label="Dog Friendly"
+                          label={t(
+                            "compare.characteristics-details.dog-friendly"
+                          )}
                           value={secondCat.dog_friendly}
                           style={{ flexDirection: "column", gap: 5 }}
                         />
                         <Characteristic
-                          label="Energy Level"
+                          label={t(
+                            "compare.characteristics-details.energy-level"
+                          )}
                           value={secondCat.energy_level}
                           style={{ flexDirection: "column", gap: 5 }}
                         />
                         <Characteristic
-                          label="Grooming"
+                          label={t("compare.characteristics-details.grooming")}
                           value={secondCat.grooming}
                           style={{ flexDirection: "column", gap: 5 }}
                         />
                         <Characteristic
-                          label="Health Issues"
+                          label={t(
+                            "compare.characteristics-details.health-issues"
+                          )}
                           value={secondCat.health_issues}
                           style={{ flexDirection: "column", gap: 5 }}
                         />
                         <Characteristic
-                          label="Intelligence"
+                          label={t(
+                            "compare.characteristics-details.intelligence"
+                          )}
                           value={secondCat.intelligence}
                           style={{ flexDirection: "column", gap: 5 }}
                         />
                         <Characteristic
-                          label="Shedding Level"
+                          label={t(
+                            "compare.characteristics-details.shedding-level"
+                          )}
                           value={secondCat.shedding_level}
                           style={{ flexDirection: "column", gap: 5 }}
                         />
                         <Characteristic
-                          label="Social Needs"
+                          label={t(
+                            "compare.characteristics-details.social-needs"
+                          )}
                           value={secondCat.social_needs}
                           style={{ flexDirection: "column", gap: 5 }}
                         />
                         <Characteristic
-                          label="Stranger Friendly"
+                          label={t(
+                            "compare.characteristics-details.stranger-friendly"
+                          )}
                           value={secondCat.stranger_friendly}
                           style={{ flexDirection: "column", gap: 5 }}
                         />
                         <Characteristic
-                          label="Vocalisation"
+                          label={t(
+                            "compare.characteristics-details.vocalisation"
+                          )}
                           value={secondCat.vocalisation}
                           style={{ flexDirection: "column", gap: 5 }}
                         />

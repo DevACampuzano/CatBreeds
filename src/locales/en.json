@@ -1,0 +1,53 @@
+{
+  "search-breed": "Search for cat breed...",
+  "cat-card": {
+    "intelligence": "Intelligence"
+  },
+  "details": {
+    "description": "Description",
+    "temper": "Temperament",
+    "general-info": "General Information",
+    "life-expectancy": "Life Expectancy",
+    "metric": "Metric",
+    "Hypoallergenic": "Hypoallergenic",
+    "characteristics": "Characteristics",
+    "yes": "Yes",
+    "no": "No",
+    "characteristics-details": {
+      "adaptability": "Adaptability",
+      "affection-level": "Affection Level",
+      "child-friendly": "Child Friendly",
+      "dog-friendly": "Dog Friendly",
+      "energy-level": "Energy Level",
+      "grooming": "Grooming",
+      "health-issues": "Health Issues",
+      "intelligence": "Intelligence",
+      "shedding-level": "Shedding Level",
+      "social-needs": "Social Needs",
+      "stranger-friendly": "Stranger Friendly",
+      "vocalisation": "Vocalisation"
+    }
+  },
+  "compare": {
+    "characteristics": "Characteristics",
+    "characteristics-details": {
+      "adaptability": "Adaptability",
+      "affection-level": "Affection Level",
+      "child-friendly": "Child Friendly",
+      "dog-friendly": "Dog Friendly",
+      "energy-level": "Energy Level",
+      "grooming": "Grooming",
+      "health-issues": "Health Issues",
+      "intelligence": "Intelligence",
+      "shedding-level": "Shedding Level",
+      "social-needs": "Social Needs",
+      "stranger-friendly": "Stranger Friendly",
+      "vocalisation": "Vocalisation"
+    }
+  },
+  "error": {
+    "not-found": "No results found.",
+    "not-connected": "You are not connected to the Internet.",
+    "place-check": "Please check your Internet connection and try again."
+  }
+}

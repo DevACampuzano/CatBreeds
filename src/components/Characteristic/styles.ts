@@ -13,6 +13,7 @@ const styles = (colors: Colors) =>
       fontSize: 16,
       color: colors.textSecondary,
       flex: 1,
+      textAlign: "center",
     },
     starsContainer: {
       flexDirection: "row",

@@ -4,12 +4,14 @@ import { View, StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import React from "react";
 //local imports
+import "./i18n";
 import { AppRouter } from "./routes";
 import { ErrorMessage } from "./components";
 import { TansStackProvider } from "./common/store/TansStack";
 import useConnection, { AppStateType } from "./common/hooks/useConnection";
 import { useFavoriteStore } from "./common/store";
 import { useSyncSystemTheme, useThemeStore } from "./common/store/ThemeStorage";
+import { useTranslation } from "./common/hooks/useI18n";
 
 const AppState = () => {
   useSyncSystemTheme();
@@ -24,6 +26,7 @@ const AppState = () => {
 
 const App = () => {
   const appState = useConnection();
+  const { t } = useTranslation();
   useFavoriteStore.persist.rehydrate();
   useThemeStore.persist.rehydrate();
 
@@ -44,8 +47,8 @@ const App = () => {
       return (
         <View style={styles.centered}>
           <ErrorMessage
-            text="No Internet Connection"
-            subtitle="Please check your internet connection."
+            text={t("error.not-connected")}
+            subtitle={t("error.place-check")}
           />
         </View>
       );
